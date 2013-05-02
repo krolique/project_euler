@@ -8,14 +8,35 @@
     The prime factors of 13195 are 5, 7, 13 and 29.
     What is the largest prime factor of the number 600851475143 ?
 
+
+    The fundamental theorem of arithmetic:
+
+        Any positive integer can be divided in primes in essentially only one
+        way. The phrase 'essentially one way' means that we do not consider
+        the order of the factors important.
+
 """
+from math import sqrt
+
+#: the number to factor
+n = 600851475143
 
 
-def problem():
+def problem(n=n):
     """ Attempt to solve the problem... """
 
     print 'problem #3'
 
+    factors = []
+    #: there's no sense in testing for 1 factorization
+    for i in xrange(2, int(sqrt(n))):
+        while n % i == 0:
+            factors.append(i)
+            n = n / i
+    if n > 1:
+        factors.append(n)
+
+    print 'the largest prime factor of %d is: %d' % (n, max(factors))
 
 if __name__ == "__main__":
     problem()
