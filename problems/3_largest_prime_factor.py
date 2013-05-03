@@ -22,13 +22,13 @@ from math import sqrt
 n = 600851475143
 
 
-def problem(n=n):
-    """ Attempt to solve the problem... """
+def factorization(n):
+    """ Returns a list of factors of n.
 
-    print 'problem #3'
+    Biggest problem with this def is O(n^2)...
+    """
 
     factors = []
-    #: there's no sense in testing for 1 factorization
     for i in xrange(2, int(sqrt(n))):
         while n % i == 0:
             factors.append(i)
@@ -36,6 +36,14 @@ def problem(n=n):
     if n > 1:
         factors.append(n)
 
+    return factors
+
+
+def problem():
+    """ Attempt to solve the problem... """
+
+    print 'problem #3'
+    factors = factorization(n)
     print 'the largest prime factor of %d is: %d' % (n, max(factors))
 
 if __name__ == "__main__":
