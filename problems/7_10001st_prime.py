@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 
     Problem 7
@@ -59,11 +60,11 @@ class Seive(object):
         eratosthenes method.
 
         """
-        #: Refinement: initially list odd numbers only, (3, 5, ..., n), and count
-        #: up using an increment of 2p in step 3, thus marking only odd multiples
-        #: of p greater than p itself. +1 to be inclusive
+        # Refinement: initially list odd numbers only, (3, 5, ..., n), and count
+        # up using an increment of 2p in step 3, thus marking only odd multiples
+        # of p greater than p itself. +1 to be inclusive
         self.seive = range(3, self.upper_bound+1, 2)
-        #: compute the size
+        # compute the size
         size = len(self.seive)
         i = 0
         while i <= sqrt(self.upper_bound):
@@ -87,10 +88,10 @@ def problem():
     """ Attempt to solve the problem... """
 
     print 'problem #7'
-    #: perhaps a generator would be most useful here for finding primes
-    #: but the most economical way would be to use sieve of eratosthenes
-    #: so we're going to have to generate enough primes to pass the 10,001
-    #: mark.
+    # perhaps a generator would be most useful here for finding primes
+    # but the most economical way would be to use sieve of eratosthenes
+    # so we're going to have to generate enough primes to pass the 10,001
+    # mark.
     s1 = Seive(300000)
     primes = [x for x in s1]
     print 'The 10,001st prime number is: %d' % primes[10000]

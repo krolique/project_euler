@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 
     Problem 6
@@ -21,7 +22,7 @@
 
 """
 
-#: bounds
+# bounds
 n = 100
 
 

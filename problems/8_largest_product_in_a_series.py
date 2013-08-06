@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 
     Problem 8
@@ -32,7 +33,7 @@
 """
 from operator import mul
 
-#: the 1,000 digit number as a list of ints
+# the 1,000 digit number as a list of ints
 numbers = [7, 3, 1, 6, 7, 1, 7, 6, 5, 3, 1, 3, 3, 0, 6, 2, 4, 9, 1, 9, 2, 2, 5,
            1, 1, 9, 6, 7, 4, 4, 2, 6, 5, 7, 4, 7, 4, 2, 3, 5, 5, 3, 4, 9, 1, 9,
            4, 9, 3, 4, 9, 6, 9, 8, 3, 5, 2, 0, 3, 1, 2, 7, 7, 4, 5, 0, 6, 3, 2,

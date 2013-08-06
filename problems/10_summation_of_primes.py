@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
     Problem 10
     ----------
@@ -27,11 +28,11 @@ class Seive(object):
         eratosthenes method.
 
         """
-        #: Refinement: initially list odd numbers only, (3, 5, ..., n), and
-        #: count up using an increment of 2p in step 3, thus marking only odd
-        #: multiples of p greater than p itself. +1 to be inclusive
+        # Refinement: initially list odd numbers only, (3, 5, ..., n), and
+        # count up using an increment of 2p in step 3, thus marking only odd
+        # multiples of p greater than p itself. +1 to be inclusive
         self.seive = range(3, self.upper_bound+1, 2)
-        #: compute the size
+        # compute the size
         size = len(self.seive)
         i = 0
         while i <= sqrt(self.upper_bound):
@@ -60,7 +61,8 @@ def problem():
         if x >= 2000000:
             break
         total_prime_sum += x
-    print total_prime_sum
+
+    print 'the sum of all the primes below two million: %d' % total_prime_sum
 
 
 if __name__ == "__main__":

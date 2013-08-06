@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 
     Problem 3
@@ -18,7 +19,7 @@
 """
 from math import sqrt
 
-#: the number to factor
+# the number to factor
 n = 600851475143
 
 

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 
     Problem 5
@@ -35,7 +36,7 @@
 
 """
 from math import fabs
-#: define the upper and lower bounds
+# define the upper and lower bounds
 lower_bound = 1
 upper_bound = 20
 
@@ -60,13 +61,13 @@ def problem():
     """ Attempt to solve the problem... """
 
     print 'problem #5'
-    #: +1 because of zero index
+    # +1 because of zero index
     num_range = range(lower_bound, upper_bound + 1)
     a = num_range.pop()
     b = num_range.pop()
     answer = lcm(a, b)
-    #: We can just continue to recalculate the lcm for each new number in the
-    #: list because: lcm(a,b,c) = lcm(a,lcm(b,c))
+    # We can just continue to recalculate the lcm for each new number in the
+    # list because: lcm(a,b,c) = lcm(a,lcm(b,c))
     for x in num_range:
         answer = lcm(x, answer)
 

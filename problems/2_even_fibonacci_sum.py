@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
     Problem 2
     =========
@@ -13,7 +14,7 @@
     exceed four million, find the sum of the even-valued terms.
 """
 
-#: used by :def:fib`, can get rather huge....
+# used by fib(), can get rather huge....
 fibs = {0: 0, 1: 1}
 
 
