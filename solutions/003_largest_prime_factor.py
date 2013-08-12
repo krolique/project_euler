@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 
-    Problem 3
-    =========
+    Problem #3
+    ----------
 
     Largest prime factor
 

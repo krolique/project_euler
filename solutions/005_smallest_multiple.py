@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 
-    Problem 5
-    =========
+    Problem #5
+    ----------
 
     Smallest multiple
 

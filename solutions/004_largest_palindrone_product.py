@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 
-    Problem 4
-    =========
+    Problem #4
+    ----------
 
     Largest palindrome product
 

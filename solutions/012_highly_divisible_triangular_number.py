@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-    Problem 12
-    ----------
+    Problem #12
+    -----------
 
     Highly divisible triangular number
 

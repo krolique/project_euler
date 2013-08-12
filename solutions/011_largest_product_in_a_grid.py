@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-    Problem 11
-    ----------
+    Problem #11
+    -----------
 
     Largest product in a grid
 

@@ -1,0 +1,7 @@
+"""
+    Solutions
+    =========
+
+    Solutions package
+
+"""

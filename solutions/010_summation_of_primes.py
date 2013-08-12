@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-    Problem 10
-    ----------
+    Problem #10
+    -----------
 
     Summation of primes
 

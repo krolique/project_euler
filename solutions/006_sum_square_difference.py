@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 
-    Problem 6
-    =========
+    Problem #6
+    ----------
 
     Sum square difference
 

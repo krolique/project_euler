@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-    Problem 2
-    =========
+    Problem #2
+    ----------
 
     Even Fibonacci numbers
 

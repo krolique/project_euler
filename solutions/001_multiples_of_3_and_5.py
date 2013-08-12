@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-    Problem 1
-    ==========
+    Problem #1
+    ----------
 
     Multiples of 3 and 5
 

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-    Problem 13
-    ----------
+    Problem #13
+    -----------
 
     Large sum
 
