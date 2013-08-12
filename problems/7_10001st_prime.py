@@ -60,9 +60,9 @@ class Seive(object):
         eratosthenes method.
 
         """
-        # Refinement: initially list odd numbers only, (3, 5, ..., n), and count
-        # up using an increment of 2p in step 3, thus marking only odd multiples
-        # of p greater than p itself. +1 to be inclusive
+        # Refinement: initially list odd numbers only, (3, 5, ..., n), and
+        # count up using an increment of 2p in step 3, thus marking only odd
+        # multiples of p greater than p itself. +1 to be inclusive
         self.seive = range(3, self.upper_bound+1, 2)
         # compute the size
         size = len(self.seive)
