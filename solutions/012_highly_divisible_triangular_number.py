@@ -14,7 +14,7 @@
 
         1, 3, 6, 10, 15, 21, 28, 36, 45, 55, ...
 
-    Let us list the factors of the first seven triangle numbers:
+    Let us list the factors of the first seven triangle numbers::
 
          1: 1
          3: 1,3

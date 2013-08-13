@@ -1,10 +1,10 @@
 
-Welcome to Project Euler Solutions's documentation!
-===================================================
-
-Contains solutions for the Project Euler problems. 
+My Project Euler Solutions and Notes
+====================================
+I've decided to create an awesome documentation module 
 
 .. toctree::
    :maxdepth: 2
 
    solutions
+   badges

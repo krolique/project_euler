@@ -21,11 +21,11 @@
 
     By the same principle, 10 is the least common multiple of -5 and 2 as well.
     The following formula reduces the problem of computing the least common
-    multiple to the problem of computing the greatest common divisor (GCD):
+    multiple to the problem of computing the greatest common divisor (GCD)::
 
         lcm(a, b) = abs(a*b)/gcd(a,b)
 
-    GCD, implies: Euclidean algorithm (pseudo-code):
+    GCD, implies: Euclidean algorithm (pseudo-code)::
 
         function gcd(a, b)
             while b != 0

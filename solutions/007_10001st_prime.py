@@ -12,7 +12,7 @@
     What is the 10,001st prime number?
 
 
-    Algorithm description
+    Sieve of Eratosthenes
     ---------------------
 
         A prime number is a natural number which has exactly two distinct
@@ -39,7 +39,9 @@
                now equal this number (which is the next prime), and repeat
                from step 3.
 
-        Source: http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
+    .. seealso::
+        `Sieve of Eratosthenes <http://en.wikipedia.org/wiki/Sieve_of_
+        Eratosthenes>`_
 
 """
 from math import sqrt
