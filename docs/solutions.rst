@@ -7,6 +7,7 @@ Solutions
 
 .. automodule:: solutions.001_multiples_of_3_and_5
 .. automodule:: solutions.002_even_fibonacci_sum
+    :: : fib
 .. automodule:: solutions.003_largest_prime_factor
 .. automodule:: solutions.004_largest_palindrone_product
 .. automodule:: solutions.005_smallest_multiple
