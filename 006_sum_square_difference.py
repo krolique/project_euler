@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 
-    Problem #6
-    ----------
-
-    Sum square difference
+    Problem #6 - Sum square difference
+    ----------------------------------
 
     The sum of the squares of the first ten natural numbers is,
 

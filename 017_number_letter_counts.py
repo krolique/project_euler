@@ -45,19 +45,38 @@ m = {
     60: 'sixty',
     70: 'seventy',
     80: 'eighty',
-    90: 'ninety'
+    90: 'ninety',
+    100: 'one hundred',
+    1000: 'one thousand'
 }
 
-n = 10
+n = 1000
+
+
+def to_english(n):
+    """Return the english representation of the number """
+
+    try:
+        return m[n]
+    except KeyError:
+        if n > 100:
+            if n % 100:
+                return '%s hundred and %s' % (m[n / 100], to_english(n % 100))
+            else:
+                return '%s hundred' % (m[n / 100])
+        if n > 10:
+            return '%s-%s' % (m[n-(n % 10)], m[n % 10])
+        else:
+            return m[n-(n % 10)]
+
 
 def problem():
     """ Attempt to solve the problem... """
 
     print 'problem #17'
-    for x in xrange(1, n+1):
-        print m[x]
-
-
+    digit_sum = sum(len(to_english(x).replace('-', '').replace(' ', '')) for x
+                    in xrange(1, n+1))
+    print 'The number of letters used is %s' % digit_sum
 
 if __name__ == "__main__":
 

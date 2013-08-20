@@ -10,11 +10,12 @@
 
 """
 
+
 def problem():
     """ Attempt to solve the problem... """
 
     print 'problem #16'
-    print 'the sum of 2^1000 digits is %s' % sum(int(x) for x in str(2**1000))    
+    print 'the sum of 2^1000 digits is %s' % sum(int(x) for x in str(2**1000))
 
 
 if __name__ == "__main__":

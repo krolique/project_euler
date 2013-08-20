@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-    Problem #9
-    ----------
 
-    Special Pythagorean triplet
+    Problem #9 - Special Pythagorean triplet
+    ----------------------------------------
 
     A Pythagorean triplet is a set of three natural numbers, a < b < c,  for
     which:

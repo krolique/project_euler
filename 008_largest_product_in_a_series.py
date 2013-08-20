@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 
-    Problem #8
-    ----------
-
-    Largest product in a series
+    Problem #8 - Largest product in a series
+    ----------------------------------------
 
     Find the greatest product of five consecutive digits in the 1000-digit
     number::

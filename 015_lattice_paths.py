@@ -8,9 +8,6 @@
     move to the right and down, there are exactly 6 routes to the bottom
     right corner.
 
-    .. image:: _static/p_015.gif
-        :align: center
-
     How many such routes are there through a 20×20 grid?
 
 """
