@@ -29,8 +29,8 @@ def problem():
     matrix[0] = 1
 
     for coin in coins:
-      for j in range(coin, len(matrix)):
-        matrix[j] += matrix[j - coin]
+        for j in range(coin, len(matrix)):
+            matrix[j] += matrix[j - coin]
 
     print 'the number of combination to make %d is: %d' % (total, matrix[-1])
 
