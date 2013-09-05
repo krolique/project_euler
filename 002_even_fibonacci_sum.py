@@ -13,34 +13,7 @@
     exceed four million, find the sum of the even-valued terms.
 """
 
-# used by fib(), can get rather huge....
-fibs = {0: 0, 1: 1}
-
-
-def fib(n):
-    """ Return n-th fibonacci number using a method developed
-    by E. W. Dijkstra
-
-    Copied from:
-        http://en.literateprograms.org/Fibonacci_numbers_(Python)
-    """
-
-    if n in fibs:
-        return fibs[n]
-    if n % 2 == 0:
-        fibs[n] = ((2 * fib((n / 2) - 1)) + fib(n / 2)) * fib(n / 2)
-        return fibs[n]
-    fibs[n] = (fib((n - 1) / 2) ** 2) + (fib((n+1) / 2) ** 2)
-    return fibs[n]
-
-
-def fib_generator():
-    """ Creates a generator which will return the next Fibonacci number """
-
-    counter = 0
-    while True:
-        yield fib(counter)
-        counter += 1
+from common import fib_generator
 
 
 def problem():
@@ -51,7 +24,7 @@ def problem():
     gen = fib_generator()
     total = 0
     while True:
-        num = gen.next()
+        num, i = gen.next()
         if num >= upper_bound:
             break
         #: only even
