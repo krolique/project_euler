@@ -24,21 +24,21 @@
 
 """
 
+from common import proper_divisors
+
 
 def problem():
     """ Attempt to solve the problem... """
 
     print 'problem #21'
 
-    d = lambda x: sum(y for y in xrange(1, x) if x % y == 0)
-
     t = 0
     for a in xrange(1, 10000):
-        b = d(a)
-        if b != a and a == d(b):
+        b = proper_divisors(a)
+        if b != a and a == proper_divisors(b):
             t += a
-            print a
     print 'the sum of amicable numbers is %s' % t
+
 
 if __name__ == "__main__":
 
