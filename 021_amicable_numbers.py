@@ -34,8 +34,8 @@ def problem():
 
     t = 0
     for a in xrange(1, 10000):
-        b = proper_divisors(a)
-        if b != a and a == proper_divisors(b):
+        b = sum(proper_divisors(a))
+        if b != a and a == sum(proper_divisors(b)):
             t += a
     print 'the sum of amicable numbers is %s' % t
 

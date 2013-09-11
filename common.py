@@ -13,7 +13,7 @@ from math import sqrt
 
 # Let proper_divisors(n) be defined as the sum of proper divisors of n
 # (numbers less than n which divide evenly into n).
-proper_divisors = lambda x: sum(y for y in xrange(1, x) if x % y == 0)
+proper_divisors = lambda x: [y for y in xrange(1, x) if x % y == 0]
 
 
 def fib_generator():
