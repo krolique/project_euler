@@ -16,6 +16,30 @@ from math import sqrt
 proper_divisors = lambda x: [y for y in xrange(1, x) if x % y == 0]
 
 
+def is_pandigital(value, digits='123456789'):
+    """Return True if value is pandigital
+
+    In mathematics, a pandigital number is an integer that in a given base has
+    among its significant digits each digit used in the base at least once.
+    For example:
+
+        1023456789, 1023456798, 1023456879, 1023456897, 1023456978, 1023456987,
+        1023457689
+
+    :param value: number to run the test against
+    :type value: int
+    :param digits: the digit base to compare against
+    :type digits: str
+    :returns: bool
+    """
+
+    value = str(value)
+    if len(value) is not len(digits):
+        return False
+
+    return 0 not in [c in value for c in digits]
+
+
 def fib_generator():
     """ Creates a generator which will return the next Fibonacci number """
 

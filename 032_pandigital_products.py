@@ -19,15 +19,7 @@
 
 """
 
-
-def is_pandigital(n):
-    """ """
-
-    s = str(n)
-    if len(s) is not 9:
-        return False
-
-    return 0 not in [c in s for c in '123456789']
+from common import is_pandigital
 
 
 def problem():
@@ -35,13 +27,13 @@ def problem():
 
     print 'problem #32'
 
-    s = 0
     pandigital = {}
     for a in xrange(1, 9999):
         for b in xrange(1, 999):
             p = a * b
             if pandigital.get(p) is None:
-                if is_pandigital('%s%s%s' % (a, b, p)):
+                m = '%s%s%s' % (a, b, p)
+                if is_pandigital(m):
                     pandigital[p] = 0
 
     print 'the sum of 1-9 pandigitals is: %s' % str(sum(pandigital.keys()))
