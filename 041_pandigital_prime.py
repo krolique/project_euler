@@ -29,7 +29,7 @@ def problem():
             print prime
             if prime > max_p:
                 max_p = prime
-    print max_p
+    print 'the largest n-digit pandigital number is %s' % max_p
 
 
 if __name__ == "__main__":

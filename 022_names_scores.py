@@ -25,7 +25,7 @@ def problem():
     print 'problem #22'
 
     names = []
-    with open('names.txt') as f:
+    with open('022_names.txt') as f:
         for line in f:
             names.extend([x.replace('"', '') for x in line.split(',')])
 

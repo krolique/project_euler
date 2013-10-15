@@ -88,7 +88,6 @@ def is_pandigital(value):
     :returns: bool
     """
 
-
     value = str(value)
     numbers = ''.join(str(x) for x in xrange(1, len(value)+1))
     return ''.join(sorted(value)) == numbers
