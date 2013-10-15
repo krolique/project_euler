@@ -16,7 +16,62 @@ from math import sqrt
 proper_divisors = lambda x: [y for y in xrange(1, x) if x % y == 0]
 
 
-def is_pandigital(value, digits='123456789'):
+def is_prime(n):
+    """Returns True or False if the number is a prime
+
+    The Naive method
+    The simplest primality test is as follows: Given an input number n, check
+    whether any integer m from 2 to n − 1 evenly divides n (the division leaves
+    no remainder). If n is divisible by any m then n is composite, otherwise it
+    is prime.
+
+    :param n: the number to check
+    :type n: int
+    :returns: bool
+    """
+
+    if n > 1:
+        # easy first prime is 2
+        if n == 2:
+            return True
+        # cannot be a prime number because it's a multiple of 2
+        if n % 2 == 0:
+            return False
+        # If we take a closer look at the divisors, we will see that some of
+        # them are redundant. The divisors just flip around and repeat.
+        # Therefore we can further eliminate testing divisors greater than
+        # sqrt(n).
+        for i in xrange(2, int(n**(0.5))):
+            if i % n == 0:
+                return False
+        return True
+    return False
+
+
+def prime_number_generator(start=None):
+    """Creates a prime number generator, this generator uses the
+    simplest and probably the most intensive method to generate prime numbers.
+
+    However since it does not use a Sieve to precompute and store existing
+    primes this method might be easier on the memory of the caller
+
+    :param start: the number to start from
+    :type start: int
+    :returns: int
+    """
+
+    if not start:
+        yield 2
+        n = 3
+    else:
+        n = start
+    while True:
+        if is_prime(n):
+            yield n
+        n += 1
+
+
+def is_pandigital(value):
     """Return True if value is pandigital
 
     In mathematics, a pandigital number is an integer that in a given base has
@@ -33,11 +88,10 @@ def is_pandigital(value, digits='123456789'):
     :returns: bool
     """
 
-    value = str(value)
-    if len(value) is not len(digits):
-        return False
 
-    return 0 not in [c in value for c in digits]
+    value = str(value)
+    numbers = ''.join(str(x) for x in xrange(1, len(value)+1))
+    return ''.join(sorted(value)) == numbers
 
 
 def fib_generator():
