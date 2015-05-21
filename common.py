@@ -17,7 +17,7 @@ proper_divisors = lambda x: [y for y in xrange(1, x) if x % y == 0]
 
 
 def is_prime(n):
-    """Returns True or False if the number is a prime
+    """Return True or False if the number is a prime
 
     The Naive method
     The simplest primality test is as follows: Given an input number n, check
@@ -71,27 +71,68 @@ def prime_number_generator(start=None):
         n += 1
 
 
-def is_pandigital(value):
-    """Return True if value is pandigital
+def is_pandigital(n, zero_fill=True, base=10):
+    """Returns True or False if the number n is pandigital.
 
-    In mathematics, a pandigital number is an integer that in a given base has
-    among its significant digits each digit used in the base at least once.
-    For example:
+    This function returns True for formal pandigital numbers (defined below) as
+    well as n-pandigital such as 4-pandigital => 1234. The formal definition is
+    given below.
 
-        1023456789, 1023456798, 1023456879, 1023456897, 1023456978, 1023456987,
-        1023457689
+    A number is said to be pandigital if it contains each of the digits from 0
+    to 9 (and whose leading digit must be nonzero). However, "zeroless"
+    pandigital quantities contain the digits 1 through 9. Sometimes exclusivity
+    is also required so that each digit is restricted to appear exactly once.
+    For example, 6729/13458 is a (zeroless, restricted) pandigital fraction and
+    1023456789 is the smallest (zerofull) pandigital number.
 
-    :param value: number to run the test against
-    :type value: int
-    :param digits: the digit base to compare against
-    :type digits: str
-    :returns: bool
+
+    ======== ====================== =======================
+     Base     Smallest pandigital    Values in base 10
+    ======== ====================== =======================
+     2        10                     2
+     3        102                    11
+     4        1023                   75
+     10       1023456789             1023456789
+     16       1023456789ABCDEF       1162849439785405935
+     Roman    MCDXLIV                1444
+    ======== ====================== =======================
+
+    :param n: number to check if its pandigital or not
+    :type n: int
+    :param zero_fill: whether or not 0 should be included in determining if the
+                      number is pandigital.
+    :type zero_fill: bool
+    :param base: In mathematical numeral systems, the radix or base is the
+                 number of unique digits, including zero, that a positional
+                 numeral system uses to represent numbers. For example, for the
+                 decimal system (the most common system in use today) the radix
+                 is ten, because it uses the ten digits from 0 through 9.
+    :type base: int
+    :returns: bool -- indicating if the numer is pandigital or not
     """
 
-    value = str(value)
-    numbers = ''.join(str(x) for x in xrange(1, len(value)+1))
-    return ''.join(sorted(value)) == numbers
+    if base > 10:
+        raise Exception('This method is not designed to handle bases higher '
+                        'than 10')
 
+    check_list = list(xrange(0, base))
+
+
+
+def simple_fibonacci_generator():
+    """Create a simple fibonacci generator which does not use recursion
+
+    The code was copied from `How to write the fibonacci sequence in python
+    <http://stackoverflow.com/questions/494594/how-to-write-the-fibonacci-s
+    equence-in-python>`_.
+    """
+
+    a, b = 0, 1
+    yield a
+    yield b
+    while True:
+        a, b = b, a + b
+        yield b
 
 def fib_generator():
     """ Creates a generator which will return the next Fibonacci number """
