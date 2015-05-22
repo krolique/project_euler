@@ -26,7 +26,6 @@ def problem():
     max_p = 0
     for prime in primes:
         if is_pandigital(prime):
-            print prime
             if prime > max_p:
                 max_p = prime
     print 'the largest n-digit pandigital number is %s' % max_p

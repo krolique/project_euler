@@ -32,10 +32,13 @@ def problem():
         for b in xrange(1, 999):
             p = a * b
             if pandigital.get(p) is None:
-                m = '%s%s%s' % (a, b, p)
-                if is_pandigital(m):
+                m = '%d%d%d' % (a, b, p)
+                if is_pandigital(int(m), zero_full=False):
+                    print m
                     pandigital[p] = 0
 
+    # Answer: 45228
+    # current 4943553
     print 'the sum of 1-9 pandigitals is: %s' % str(sum(pandigital.keys()))
 
 
