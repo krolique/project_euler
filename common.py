@@ -11,13 +11,9 @@
 from math import sqrt
 
 
-# Let proper_divisors(n) be defined as the sum of proper divisors of n
-# (numbers less than n which divide evenly into n).
-proper_divisors = lambda x: [y for y in xrange(1, x) if x % y == 0]
-
-
-def is_prime(n):
-    """Return True or False if the number is a prime
+def is_prime(number):
+    """Returns true if a number is a prime number. This method uses the
+    simplest and most naive method for checking primes.
 
     The Naive method
     The simplest primality test is as follows: Given an input number n, check
@@ -25,24 +21,24 @@ def is_prime(n):
     no remainder). If n is divisible by any m then n is composite, otherwise it
     is prime.
 
-    :param n: the number to check
-    :type n: int
+    :param number: the number to check
+    :type number: int
     :returns: bool
     """
 
-    if n > 1:
+    if number > 1:
         # easy first prime is 2
-        if n == 2:
+        if number == 2:
             return True
         # cannot be a prime number because it's a multiple of 2
-        if n % 2 == 0:
+        if number % 2 == 0:
             return False
         # If we take a closer look at the divisors, we will see that some of
         # them are redundant. The divisors just flip around and repeat.
         # Therefore we can further eliminate testing divisors greater than
         # sqrt(n).
-        for i in xrange(2, int(n**(0.5))):
-            if i % n == 0:
+        for divisor in xrange(2, int(number**(0.5))):
+            if divisor % number == 0:
                 return False
         return True
     return False
@@ -62,16 +58,15 @@ def prime_number_generator(start=None):
 
     if not start:
         yield 2
-        n = 3
-    else:
-        n = start
+
+    number = 3
     while True:
-        if is_prime(n):
-            yield n
-        n += 1
+        if is_prime(number):
+            yield number
+        number += 1
 
 
-def is_pandigital(n, zero_fill=True, base=10):
+def is_pandigital(number, zero_fill=True):
     """Returns True or False if the number n is pandigital.
 
     This function returns True for formal pandigital numbers (defined below) as
@@ -82,8 +77,8 @@ def is_pandigital(n, zero_fill=True, base=10):
     to 9 (and whose leading digit must be nonzero). However, "zeroless"
     pandigital quantities contain the digits 1 through 9. Sometimes exclusivity
     is also required so that each digit is restricted to appear exactly once.
-    For example, 6729/13458 is a (zeroless, restricted) pandigital fraction and
-    1023456789 is the smallest (zerofull) pandigital number.
+    For example, 6729/13458 is a (zeroless, restricted) pandigital fraction
+    and 1023456789 is the smallest (zerofull) pandigital number.
 
 
     ======== ====================== =======================
@@ -97,26 +92,25 @@ def is_pandigital(n, zero_fill=True, base=10):
      Roman    MCDXLIV                1444
     ======== ====================== =======================
 
-    :param n: number to check if its pandigital or not
-    :type n: int
+    :param number: number to check if its pandigital or not
+    :type number: int
     :param zero_fill: whether or not 0 should be included in determining if the
                       number is pandigital.
     :type zero_fill: bool
-    :param base: In mathematical numeral systems, the radix or base is the
-                 number of unique digits, including zero, that a positional
-                 numeral system uses to represent numbers. For example, for the
-                 decimal system (the most common system in use today) the radix
-                 is ten, because it uses the ten digits from 0 through 9.
-    :type base: int
     :returns: bool -- indicating if the numer is pandigital or not
     """
 
-    if base > 10:
-        raise Exception('This method is not designed to handle bases higher '
-                        'than 10')
+    size = 10 if zero_fill else 9
 
-    check_list = list(xrange(0, base))
+    seen_numbers = {}
+    while number > 0:
+        remander = number % 10
+        number = (number - remander) / 10
+        if seen_numbers.get(remander) is not None:
+            return False
+        seen_numbers[remander] = 1
 
+    return len(seen_numbers) == size
 
 
 def simple_fibonacci_generator():
@@ -127,12 +121,13 @@ def simple_fibonacci_generator():
     equence-in-python>`_.
     """
 
-    a, b = 0, 1
-    yield a
-    yield b
+    number_1, number_2 = 0, 1
+    yield number_1
+    yield number_2
     while True:
-        a, b = b, a + b
-        yield b
+        number_1, number_2 = number_2, number_1 + number_2
+        yield number_2
+
 
 def fib_generator():
     """ Creates a generator which will return the next Fibonacci number """
@@ -140,7 +135,7 @@ def fib_generator():
     # used by fib(), can get rather huge....
     fibs = {0: 0, 1: 1}
 
-    def fib(n):
+    def fib(number):
         """ Return n-th fibonacci number using a method developed
         by E. W. Dijkstra
 
@@ -148,13 +143,15 @@ def fib_generator():
             http://en.literateprograms.org/Fibonacci_numbers_(Python)
         """
 
-        if n in fibs:
-            return fibs[n]
-        if n % 2 == 0:
-            fibs[n] = ((2 * fib((n / 2) - 1)) + fib(n / 2)) * fib(n / 2)
-            return fibs[n]
-        fibs[n] = (fib((n - 1) / 2) ** 2) + (fib((n+1) / 2) ** 2)
-        return fibs[n]
+        if number in fibs:
+            return fibs[number]
+        if number % 2 == 0:
+            fibs[number] = ((2 * fib((number / 2) - 1))
+                            + fib(number / 2)) * fib(number / 2)
+            return fibs[number]
+        fibs[number] = (fib((number - 1) / 2) ** 2) + (fib((number+1) / 2)
+                                                        ** 2)
+        return fibs[number]
 
     counter = 0
     while True:
