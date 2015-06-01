@@ -178,6 +178,89 @@ def simple_factorization(number):
     return factors
 
 
+def recursive_gcd(a, b):
+    """Returns the greatest common denominator by performing euclidean division
+
+    This method uses "Euclidean algorithm"
+
+    The Euclidean algorithm proceeds in a series of steps such that the output
+    of each step is used as an input for the next one. Let k be an integer that
+    counts the steps of the algorithm, starting with zero. Thus, the initial
+    step corresponds to k = 0, the next step corresponds to k = 1, and so on.
+
+    Each step begins with two nonnegative remainders r(k−1) and r(k−2). Since
+    the algorithm ensures that the remainders decrease steadily with every
+    step, rk−1 is less than its predecessor rk−2. The goal of the kth step is
+    to find a quotient qk and remainder rk that satisfy the equation
+
+
+        r(k−2) = q(k) * r(k−1) + r(k)
+
+
+    and that have rk < rk−1. In other words, multiples of the smaller number
+    r(k−1) are subtracted from the larger number r(k−2) until the remainder
+    r(k) is smaller than r(k−1).
+
+    In the initial step (k = 0), the remainders r−2 and r−1 equal a and b, the
+    numbers for which the GCD is sought. In the next step (k = 1), the
+    remainders equal b and the remainder r0 of the initial step, and so on.
+    Thus, the algorithm can be written as a sequence of equations
+
+        a =  q0 * b + r0
+        b =  q1 * r0 + r1
+        r0 = q2 * r1 + r2
+        r1 = q3 * r2 + r3
+
+    """
+
+    if b == 0:
+        return a
+    return recursive_gcd(b, a % b)
+
+
+def iterative_gcd(a, b):
+    """Returns the greatest common denominator by performing euclidean division
+
+    This method uses "Euclidean algorithm"
+
+    The Euclidean algorithm proceeds in a series of steps such that the output
+    of each step is used as an input for the next one. Let k be an integer that
+    counts the steps of the algorithm, starting with zero. Thus, the initial
+    step corresponds to k = 0, the next step corresponds to k = 1, and so on.
+
+    Each step begins with two nonnegative remainders r(k−1) and r(k−2). Since
+    the algorithm ensures that the remainders decrease steadily with every
+    step, rk−1 is less than its predecessor rk−2. The goal of the kth step is
+    to find a quotient qk and remainder rk that satisfy the equation
+
+
+        r(k−2) = q(k) * r(k−1) + r(k)
+
+
+    and that have rk < rk−1. In other words, multiples of the smaller number
+    r(k−1) are subtracted from the larger number r(k−2) until the remainder
+    r(k) is smaller than r(k−1).
+
+    In the initial step (k = 0), the remainders r−2 and r−1 equal a and b, the
+    numbers for which the GCD is sought. In the next step (k = 1), the
+    remainders equal b and the remainder r0 of the initial step, and so on.
+    Thus, the algorithm can be written as a sequence of equations
+
+        a =  q0 * b + r0
+        b =  q1 * r0 + r1
+        r0 = q2 * r1 + r2
+        r1 = q3 * r2 + r3
+
+    """
+
+    while b:
+        temp = b
+        b = a % b
+        a = temp
+
+    return a
+
+
 class Seive(object):
     """ Prime Number Seive """
 
