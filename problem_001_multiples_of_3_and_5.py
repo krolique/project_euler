@@ -11,15 +11,14 @@
 """
 
 
-def problem():
+def problem_1():
     """ Attempt to solve the problem... """
 
-    print 'problem #1'
-    upper_bound = 1000
-    total_sum = sum([x for x in xrange(upper_bound)
-                    if x % 3 == 0 or x % 5 == 0])
-    print 'sum of all multiple of 3 or 5 is: %d ' % total_sum
+    return sum([x for x in xrange(1000) if x % 3 == 0 or x % 5 == 0])
+
 
 if __name__ == "__main__":
 
-    problem()
+    print 'problem #1'
+    ANSWER = problem_1()
+    print 'sum of all multiple of 3 or 5 is: %d ' % ANSWER

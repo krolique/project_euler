@@ -129,7 +129,7 @@ def simple_fibonacci_generator():
         yield number_2
 
 
-def fib_generator():
+def fibonacci_generator():
     """ Creates a generator which will return the next Fibonacci number """
 
     # used by fib(), can get rather huge....
@@ -155,8 +155,27 @@ def fib_generator():
 
     counter = 0
     while True:
-        yield fib(counter), counter
+        yield counter, fib(counter)
         counter += 1
+
+
+def simple_factorization(number):
+    """ Returns a list of factors of the given number
+
+    :param number: the number factor
+    :type number: int
+    :returns: list    
+    """
+
+    factors = []
+    for i in xrange(2, int(sqrt(number))):
+        while number % i == 0:
+            factors.append(i)
+            number = number / i
+    if number > 1:
+        factors.append(number)
+
+    return factors
 
 
 class Seive(object):

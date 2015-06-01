@@ -11,27 +11,26 @@
 
     By considering the terms in the Fibonacci sequence whose values do not
     exceed four million, find the sum of the even-valued terms.
+
 """
 
-from common import fib_generator
+from common import fibonacci_generator
 
 
-def problem():
+def problem_2():
     """ Attempt to solve the problem... """
 
-    print 'problem #2'
-    upper_bound = 4 * 10**6
-    gen = fib_generator()
     total = 0
-    while True:
-        num, i = gen.next()
-        if num >= upper_bound:
+    for value in fibonacci_generator():
+        if value[1] >= 4000000:
             break
-        #: only even
-        if num % 2 == 0:
-            total += num
-    print 'sum of even fibonacci numbers less than 4e6 is: %d ' % total
+        if value[1] % 2 == 0:
+            total += value[1]
+    return total
 
 if __name__ == "__main__":
 
-    problem()
+    print 'problem #2'
+    ANSWER = problem_2()
+    print 'sum of even fibonacci numbers less than four million is: %d ' % \
+          ANSWER

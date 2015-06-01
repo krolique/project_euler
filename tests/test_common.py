@@ -8,7 +8,48 @@
 
 """
 
-from common import is_pandigital
+from common import (is_pandigital, simple_fibonacci_generator,
+                    fibonacci_generator, simple_factorization)
+
+FIBONACCI_NUMBERS = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377,
+                     610, 987, 1597, 2584, 4181, 6765, 10946, 17711, 28657,
+                     46368, 75025, 121393, 196418, 317811, 514229, 832040,
+                     1346269, 2178309, 3524578, 5702887, 9227465, 14930352,
+                     24157817, 39088169]
+
+
+def test_simple_factorization():
+    """Tests simple factorization method """
+
+    assert simple_factorization(20) == [2, 2, 5]
+    assert simple_factorization(201929) == [7, 7, 13, 317]
+    assert simple_factorization(0) == []
+    assert simple_factorization(1) == []
+    assert simple_factorization(12) == [2, 2, 3]
+    assert simple_factorization(17) == [17]
+
+
+
+def test_simple_finonacci_gen_output():
+    """Tests simple fibanacci generator output """
+
+    for index, number in enumerate(simple_fibonacci_generator()):
+        #: since the generator is infinite, we'd like to terminate at some
+        #: point
+        if index >= len(FIBONACCI_NUMBERS):
+            break
+        assert number == FIBONACCI_NUMBERS[index]
+
+
+def test_fib_generator():
+    """Tests fib generator output """
+
+    for index, number in fibonacci_generator():
+        #: since the generator is infinite, we'd like to terminate at some
+        #: point
+        if index >= len(FIBONACCI_NUMBERS):
+            break
+        assert number == FIBONACCI_NUMBERS[index]
 
 
 def test_is_pandigital_non_zerofill_valid():
