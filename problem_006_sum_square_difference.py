@@ -20,20 +20,18 @@
 
 """
 
-# bounds
-n = 100
 
-
-def problem():
+def problem_6():
     """ Attempt to solve the problem... """
 
-    print 'problem #6'
-
-    square_sum = n * ((n + 1) * (2*n + 1)) / 6
-    numbers_sum = (n * (n + 1) / 2) ** 2
-    difference = numbers_sum - square_sum
-    print 'the differenc between sum of squares %d and the square of the sum'\
-          ' %d is: %d' % (numbers_sum, square_sum, difference)
+    limit = 100
+    square_sum = limit * ((limit + 1) * (2 * limit + 1)) / 6
+    numbers_sum = (limit * (limit + 1) / 2) ** 2
+    return numbers_sum - square_sum
 
 if __name__ == "__main__":
-    problem()
+
+    print 'problem #6'
+    ANSWER = problem_6()
+    print 'The difference between the sum of the square and square of the '\
+          'sum of the one to one hundred natural numbers is: %d' % ANSWER
