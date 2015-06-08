@@ -11,6 +11,8 @@
 from problem_001_multiples_of_3_and_5 import problem_1
 from problem_002_even_fibonacci_sum import problem_2
 from problem_003_largest_prime_factor import problem_3
+from problem_004_largest_palindrone_product import problem_4
+from problem_005_smallest_multiple import problem_5
 
 
 def test_answers():
@@ -19,3 +21,5 @@ def test_answers():
     assert problem_1() == 233168
     assert problem_2() == 4613732
     assert problem_3() == 6857
+    assert problem_4() == 906609
+    assert problem_5() == 232792560

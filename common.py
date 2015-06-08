@@ -8,7 +8,7 @@
 
 """
 
-from math import sqrt
+from math import sqrt, fabs
 
 
 def is_prime(number):
@@ -33,10 +33,19 @@ def is_prime(number):
         # cannot be a prime number because it's a multiple of 2
         if number % 2 == 0:
             return False
-        # If we take a closer look at the divisors, we will see that some of
-        # them are redundant. The divisors just flip around and repeat.
-        # Therefore we can further eliminate testing divisors greater than
-        # sqrt(n).
+
+        #: The optimization in checking divisors less than sqrt(n) can be
+        #: explained with proof by contradiction. If n is not a prime then
+        #: there exists two numbers such that n = a*b where either a or b must
+        #: be less than or equal to the sqrt(n). If both were to be greater
+        #: than the square root of n then the product of a*b would be greater
+        #: than n. If we can prove that there is such a or b that is less that
+        #: sqrt(n) then we can prove n is not a prime. The search for a number
+        #: would add another factor into factorization of n and disprove the
+        #: primality of n. Another proof of this optimization can be derived
+        #: from observing that some of the divisors after the sqrt(n) boundry
+        #: are really multiples of earlier divisors. So we can just skip
+        #: testing those.
         for divisor in xrange(2, int(number**(0.5))):
             if divisor % number == 0:
                 return False
@@ -261,43 +270,99 @@ def iterative_gcd(a, b):
     return a
 
 
-class Seive(object):
-    """ Prime Number Seive """
+def lcm(a, b):
+    """ Returns the lowest common multiple of a and b
 
-    def __init__(self, upper_bound=0):
-        """ """
+    A multiple of a number is the product of that number and an integer.
+    For example, 10 is a multiple of 5 because 5 * 2 = 10, so 10 is
+    divisible by 5 and 2. Because 10 is the smallest positive integer that is
+    divisible by both 5 and 2, it is the least common multiple of 5 and 2.
 
-        self.upper_bound = upper_bound
-        self.seive = []
-        self.eratosthenes_seive()
+    By the same principle, 10 is the least common multiple of -5 and 2 as well.
+    The following formula reduces the problem of computing the least common
+    multiple to the problem of computing the greatest common divisor (GCD):
 
-    def eratosthenes_seive(self):
-        """ Returns prime numbers upto the number n using the sieve of
-        eratosthenes method.
+        lcm(a, b) = abs(a*b)/gcd(a,b)
 
-        """
-        # Refinement: initially list odd numbers only, (3, 5, ..., n), and
-        # count up using an increment of 2p in step 3, thus marking only odd
-        # multiples of p greater than p itself. +1 to be inclusive
-        self.seive = range(3, self.upper_bound+1, 2)
-        # compute the size
-        size = len(self.seive)
-        i = 0
-        while i <= sqrt(self.upper_bound):
-            if self.seive[i]:
-                for x in xrange(i + self.seive[i], size, self.seive[i]):
-                    self.seive[x] = 0
-            i += 1
+    """
 
-    def __iter__(self):
-        """ """
+    return fabs(a * b) / iterative_gcd(a, b)
 
-        if self.upper_bound > 1:
-            yield 2
+def seive_generator(upper_bound):
+    """The prime number seive
 
-        for x in self.seive:
-            if x:
-                yield x
+    A prime number is a natural number that has exactly two distinct natural
+    number divisors: 1 and itself.
+
+    To find all the prime numbers less than or equal to a given integer n by 
+    Eratosthenes' method:
+
+        1. Create a list of consecutive integers from 2 through n: 
+                (2, 3, 4, ..., n).
+
+        2. Initially, let p equal 2, the first prime number.
+
+        3. Starting from p, enumerate its multiples by counting to n in
+           increments of p, and mark them in the list (these will be 2p, 3p,
+            4p, ... ; the p itself should not be marked).
+
+        4. Find the first number greater than p in the list that is not marked.
+           If there was no such number, stop. Otherwise, let p now equal this
+           new number (which is the next prime), and repeat from step 3.
+
+    When the algorithm terminates, the numbers remaining not marked in the list
+    are all the primes below n.
+
+    The main idea here is that every value for p is prime, because we have
+    already marked all the multiples of the numbers less than p. Note that
+    some of the numbers being marked may have already been marked earlier
+    (e.g., 15 will be marked both for 3 and 5).
+
+    As a refinement, it is sufficient to mark the numbers in step 3 starting
+    from p2, as all the smaller multiples of p will have already been marked
+    at that point. This means that the algorithm is allowed to terminate in
+    step 4 when p2 is greater than n.
+
+    Another refinement is to initially list odd numbers only, (3, 5, ..., n),
+    and count in increments of 2p in step 3, thus marking only odd multiples
+    of p. This actually appears in the original algorithm.[1] This can be
+    generalized with wheel factorization, forming the initial list only from
+    numbers coprime with the first few primes and not just from odds (i.e.,
+    numbers coprime with 2), and counting in the correspondingly adjusted
+    increments so that only such multiples of p are generated that are coprime
+    with those small primes, in the first place.
+
+    The sieving can also be done in consecutive segments, both to reduce
+    memory requirements and to enhance performance due to CPU cache usage.
+
+    See more:
+        http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
+
+    """
+
+    #: first prime number is two
+    yield 2
+
+    if upper_bound < 3:
+        return
+
+    lmtbf = (upper_bound - 3) // 2
+    buf = [True] * (lmtbf + 1)
+    for i in range((int(upper_bound ** 0.5) - 3) // 2 + 1):
+        if buf[i]:  
+            p = i + i + 3
+            #: As a refinement, it is sufficient to mark the numbers in step 3
+            #: starting from p2, as all the smaller multiples of p will have
+            #: already been marked at that point. This means that the algorithm
+            #: is allowed to terminate in step 4 when p2 is greater than n.[1]
+            s = p * (i + 1) + i
+            #: optimized to use slice operations for composite number culling
+            #: to avoid extra work by the interpreter:
+            buf[s::p] = [False] * ((lmtbf - s) // p + 1)
+    
+    for i in range(lmtbf + 1):
+        if buf[i]:
+            yield (i + i + 3)
 
 
 def permutations(seq, permutation=[]):

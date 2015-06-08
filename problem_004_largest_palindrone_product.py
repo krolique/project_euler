@@ -11,22 +11,20 @@
 
 """
 
-# palindrome size
-n = 3
-
-
-def problem(n=n):
+def problem_4():
     """ Attempt to solve the problem... """
 
-    print 'problem #4'
     biggest = 0
-    for i in xrange(10**n):
-        for j in xrange(10**n):
+    for i in xrange(100, 999):
+        for j in xrange(100, 999):
             product = i*j
             if str(product) == str(product)[::-1] and product > biggest:
                 biggest = product
 
-    print 'the biggest palindrome of %d-digit product is %d' % (n, biggest)
+    return biggest
 
 if __name__ == "__main__":
-    problem()
+
+    print 'problem #4'
+    ANSWER = problem_4()
+    print 'the biggest palindrome of 3-digit product is %d' % ANSWER
