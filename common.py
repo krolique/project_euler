@@ -159,7 +159,7 @@ def fibonacci_generator():
                             + fib(number / 2)) * fib(number / 2)
             return fibs[number]
         fibs[number] = (fib((number - 1) / 2) ** 2) + (fib((number+1) / 2)
-                                                        ** 2)
+                                                       ** 2)
         return fibs[number]
 
     counter = 0
@@ -173,7 +173,7 @@ def simple_factorization(number):
 
     :param number: the number factor
     :type number: int
-    :returns: list    
+    :returns: list
     """
 
     factors = []
@@ -288,16 +288,17 @@ def lcm(a, b):
 
     return fabs(a * b) / iterative_gcd(a, b)
 
+
 def seive_generator(upper_bound):
     """The prime number seive
 
     A prime number is a natural number that has exactly two distinct natural
     number divisors: 1 and itself.
 
-    To find all the prime numbers less than or equal to a given integer n by 
+    To find all the prime numbers less than or equal to a given integer n by
     Eratosthenes' method:
 
-        1. Create a list of consecutive integers from 2 through n: 
+        1. Create a list of consecutive integers from 2 through n:
                 (2, 3, 4, ..., n).
 
         2. Initially, let p equal 2, the first prime number.
@@ -349,7 +350,7 @@ def seive_generator(upper_bound):
     lmtbf = (upper_bound - 3) // 2
     buf = [True] * (lmtbf + 1)
     for i in range((int(upper_bound ** 0.5) - 3) // 2 + 1):
-        if buf[i]:  
+        if buf[i]:
             p = i + i + 3
             #: As a refinement, it is sufficient to mark the numbers in step 3
             #: starting from p2, as all the smaller multiples of p will have
@@ -359,7 +360,7 @@ def seive_generator(upper_bound):
             #: optimized to use slice operations for composite number culling
             #: to avoid extra work by the interpreter:
             buf[s::p] = [False] * ((lmtbf - s) // p + 1)
-    
+
     for i in range(lmtbf + 1):
         if buf[i]:
             yield (i + i + 3)
