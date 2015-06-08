@@ -14,6 +14,7 @@ from problem_003_largest_prime_factor import problem_3
 from problem_004_largest_palindrone_product import problem_4
 from problem_005_smallest_multiple import problem_5
 from problem_006_sum_square_difference import problem_6
+from problem_007_10001st_prime import problem_7
 
 
 def test_answers():
@@ -25,3 +26,4 @@ def test_answers():
     assert problem_4() == 906609
     assert problem_5() == 232792560
     assert problem_6() == 25164150
+    assert problem_7() == 104743
