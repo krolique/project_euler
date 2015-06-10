@@ -18,25 +18,19 @@
 
 """
 
-def pentagonal():
-    """ """
 
-    i = 0
-    while True:
-        yield i, i*(3*i-1)/2
-        i += 1
-
-def problem():
+def problem_44():
     """ Attempt to solve the problem... """
 
-    print 'problem #44'
-    numbers = []
-    p = pentagonal()
-    for x in xrange(100):
-        numbers.append(p.next())
-
+    numbers = {x * (3 * x - 1) / 2: True for x in xrange(1, 10000)}
+    for num1 in numbers.keys():
+        for num2 in numbers.keys():
+            if numbers.get(num1 + num2) and numbers.get(num2 - num1):
+                return num2 - num1
 
 
 if __name__ == "__main__":
 
-    problem()
+    print 'problem #44'
+    ANSWER = problem_44()
+    print 'The distance between two pentagonal numbers is %s' % ANSWER
