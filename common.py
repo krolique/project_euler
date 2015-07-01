@@ -1,10 +1,19 @@
 # -*- coding: utf-8 -*-
 """
+       ______                                    
+      / ____/___  ____ ___  ____ ___  ____  ____ 
+     / /   / __ \/ __ `__ \/ __ `__ \/ __ \/ __ \
+    / /___/ /_/ / / / / / / / / / / / /_/ / / / /
+    \____/\____/_/ /_/ /_/_/ /_/ /_/\____/_/ /_/ 
+    ----------------------------------------------
 
-    Common
-    ------
-
-    Contains shared code
+    Contains shared code and other wonderful things. This isn't like a trash
+    bin for misfits of computer science but rather stuff that can be thought
+    of as totally useful in many (and I mean many-many) hypothetical situations
+    one can hypothesize. May be this is like a Swiss army knife with like a
+    toaster and a mini refrigerator that at 2 AM after binge drinking with
+    friends can save you from being totally hang over next day with a terrible
+    headache. Yea, it’s that kind of a common bin!
 
 """
 
