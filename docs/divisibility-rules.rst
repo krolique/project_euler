@@ -1,15 +1,9 @@
 
-
 Divisibility Rules
 ------------------
-Easily test if one number can be evenly divided by another
-
-
-
 The following table summarizes divisibility rules for numbers. Some of these
-rules can be recurse such that if you apply the first operation and you're
-still left with the same number you can apply the rule again. Example:
-number 1629 would be 1 + 6 + 2 + 9 = 18, apply again 1 + 8 = 9. 
+rules can be recursive such that if you apply suggested operation and you're
+still left with the ambiguous number you can apply the rule again.
 
 
 +------------------------+--------------------------------------------+
