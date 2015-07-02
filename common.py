@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-       ______                                    
-      / ____/___  ____ ___  ____ ___  ____  ____ 
+       ______
+      / ____/___  ____ ___  ____ ___  ____  ____
      / /   / __ \/ __ `__ \/ __ `__ \/ __ \/ __ \
     / /___/ /_/ / / / / / / / / / / / /_/ / / / /
-    \____/\____/_/ /_/ /_/_/ /_/ /_/\____/_/ /_/ 
+    \____/\____/_/ /_/ /_/_/ /_/ /_/\____/_/ /_/
     ----------------------------------------------
 
     Contains shared code and other wonderful things. This isn't like a trash
@@ -296,6 +296,36 @@ def lcm(a, b):
     """
 
     return fabs(a * b) / iterative_gcd(a, b)
+
+
+def subarray_sum(array, desired_sum):
+    """Returns a list of consecutive elements that sum up to the desired
+    sum or an empty list if nothing sums up
+
+    :param: array
+    :type array: list of positive (YES ONLY POSITIVE) integers
+    :param desired_sum: the sum to find in the array
+    :type desired_sum: int
+    :returns: list -- of consecutive elements that sum up to the desired sum or
+        an empty list
+    """
+
+    current_sum = array[0]
+    start, end = 0, 0
+    while end < len(array):
+        if current_sum == desired_sum:
+            return array[start:end+1]
+
+        if current_sum <= desired_sum:
+            end += 1
+            if end < len(array):
+                current_sum += array[end]
+        else:
+            current_sum -= array[start]
+            start += 1
+    # in the event nothing is found we should return an empty list as per
+    # the function contract
+    return []
 
 
 def seive_generator(upper_bound):

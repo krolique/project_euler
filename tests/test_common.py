@@ -8,7 +8,7 @@
 
 """
 
-from common import (is_pandigital, simple_fibonacci_generator,
+from common import (is_pandigital, simple_fibonacci_generator, subarray_sum,
                     fibonacci_generator, simple_factorization, recursive_gcd,
                     iterative_gcd, seive_generator, lcm)
 
@@ -172,6 +172,15 @@ def test_simple_factorization():
     assert simple_factorization(12) == [2, 2, 3]
     assert simple_factorization(17) == [17]
 
+
+def test_subarray_sum():
+    """Tests subarray_sum function """
+
+    assert [20, 3, 10] == subarray_sum([1, 4, 20, 3, 10, 5], 33)
+    assert [4, 0, 0, 3] == subarray_sum([1, 4, 0, 0, 3, 10, 5], 7)
+    assert [] == subarray_sum([1, 4], 0)
+    assert [2] == subarray_sum([2], 2)
+    assert [] == subarray_sum([2], 3)
 
 def test_simple_finonacci_gen():
     """Tests simple fibanacci generator output """
