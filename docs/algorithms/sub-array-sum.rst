@@ -13,8 +13,7 @@ Seems simple enough, the algorithm for finding such a sum is trivial. Starting
 from index zero keep adding values until you've reached the desired sum or
 exceeded the desired sum. 
 
-Python Code::
-    .. code:: python
+.. code:: python
 
     so_far = 0
     for idx, value in enumerate(array):
@@ -43,9 +42,7 @@ with large arrays.
 Suppose some one told you there's a way to implement this in linear time!
 
 
-Lets examine the code::
-
-    .. code:: python
+.. code:: python
     current_sum = array[0]
     start, end = 0, 0
     while end < len(array):
@@ -120,7 +117,8 @@ During this loop the algorithm begins to move the *start* position forward
 while the *end* position remains fixed. This is because we can't add any more
 elements going forward, the current sum exceeds desired sum, so we have to
 remove some of the earlier elements from the sum and reduce the size of our
-window. The algorithm can also move the *end* position forward if the 
+window. The algorithm can also begin to move *end* position forward if the 
+current sum is set to a value of less than desired sum.
 
 Loop 5::
 
