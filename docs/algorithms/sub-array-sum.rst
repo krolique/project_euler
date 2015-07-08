@@ -140,8 +140,8 @@ Loop 6::
 
     start         ↓
           [ 1, 3, 10, 20, 6, 50 ] current_sum = 36
-                          ↑
-    end    
+    end                   ↑
+
 
 Loop 7::
 
