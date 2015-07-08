@@ -43,6 +43,7 @@ Suppose some one told you there's a way to implement this in linear time!
 
 
 .. code:: python
+
     current_sum = array[0]
     start, end = 0, 0
     while end < len(array):
