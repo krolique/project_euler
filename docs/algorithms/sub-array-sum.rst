@@ -2,7 +2,7 @@ Sub Array Sum
 =============
 The sub array problem go like this: suppose you are given an array of integers
 (in our case they are all positive) and we want to determine if there is a 
-consequtive sequence of integers that sum up to a particular sum.
+consecutive sequence of integers that sum up to a particular sum.
 
 Example::
 
@@ -10,7 +10,7 @@ Example::
     Answer: [1, 3, 10]
 
 Seems simple enough, the algorithm for finding such a sum is trivial. Starting
-from index zero keep adding values until you've reach the desired sum or
+from index zero keep adding values until you've reached the desired sum or
 exceeded the desired sum. 
 
 Python Code::
@@ -25,7 +25,7 @@ Python Code::
     return []
 
 
-Well, this approach is great unless the consequtive sum of integers can be
+Well, this approach is great unless the consecutive sum of integers can be
 found much later in the array.
 
 Example::
@@ -39,9 +39,7 @@ found by going from index + 1". This approach will solve the problem...However
 the run time of this would be polynomial and that's not so great when dealing
 with large arrays. 
 
-Suppose some one told you theres a way to implement this in linear time!
-Analogous to Kadane's algorithm
-
+Suppose some one told you there's a way to implement this in linear time!
 
 
 Lets examine the code::
@@ -59,11 +57,84 @@ Lets examine the code::
         else:
             current_sum -= array[start]
             start += 1
-    # in the event nothing is found we should return an empty list as per
-    # the function contract
     return []
 
+Initial parameters::
+
+    Given: [1, 3, 10, 20, 6, 50] and 36
+
+Loop 1::
+
+    start   ↓ 
+          [ 1, 3, 10, 20, 6, 50 ] current_sum = 0
+    end     ↑
+
+    start   ↓
+          [ 1, 3, 10, 20, 6, 50 ] current_sum = 4
+    end        ↑
 
 
-    [1, 3, 4, 5, 6, 10]
-        ^
+Loop 2::
+
+    start   ↓ 
+          [ 1, 3, 10, 20, 6, 50 ] current_sum = 4
+    end        ↑
+
+    start   ↓
+          [ 1, 3, 10, 20, 6, 50 ] current_sum = 14
+    end           ↑
+
+Loop 3::
+
+    start   ↓ 
+          [ 1, 3, 10, 20, 6, 50 ] current_sum = 14
+    end           ↑
+
+    start   ↓
+          [ 1, 3, 10, 20, 6, 50 ] current_sum = 34
+    end               ↑
+
+Loop 4::
+
+    start   ↓ 
+          [ 1, 3, 10, 20, 6, 50 ] current_sum = 14
+    end               ↑
+
+    start   ↓
+          [ 1, 3, 10, 20, 6, 50 ] current_sum = 40
+    end                   ↑
+
+
+Loop 5::
+
+    start   ↓ 
+          [ 1, 3, 10, 20, 6, 50 ] current_sum = 40
+    end                   ↑
+
+    start      ↓
+          [ 1, 3, 10, 20, 6, 50 ] current_sum = 39
+    end                   ↑
+
+
+Loop 6::
+
+    start      ↓ 
+          [ 1, 3, 10, 20, 6, 50 ] current_sum = 39
+    end                   ↑
+
+    start         ↓
+          [ 1, 3, 10, 20, 6, 50 ] current_sum = 36
+                          ↑
+    end    
+
+Loop 7::
+
+    start         ↓ 
+          [ 1, 3, 10, 20, 6, 50 ] current_sum = 36
+    end                   ↑
+
+    return array[2:5]
+
+
+
+
