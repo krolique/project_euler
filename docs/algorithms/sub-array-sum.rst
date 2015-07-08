@@ -14,6 +14,7 @@ from index zero keep adding values until you've reached the desired sum or
 exceeded the desired sum. 
 
 Python Code::
+    .. code:: python
 
     so_far = 0
     for idx, value in enumerate(array):
@@ -44,10 +45,12 @@ Suppose some one told you there's a way to implement this in linear time!
 
 Lets examine the code::
 
+    .. code:: python
     current_sum = array[0]
     start, end = 0, 0
     while end < len(array):
         if current_sum == desired_sum:
+            # plus one because of zero index array
             return array[start:end+1]
 
         if current_sum <= desired_sum:
@@ -58,6 +61,15 @@ Lets examine the code::
             current_sum -= array[start]
             start += 1
     return []
+
+In a gist code above will adjust the *start* and *end* positions (or pointers)
+in one of two interchangeable phases. If the sum is less than desired sum
+*end* position will be moved and if the sum is greater than desired sum the
+*start* position will be moved. When the *end* position is adjusted the each
+element in the array at that index is added and when the *start* position is
+adjusted the element at that index is removed. It would be best to run through
+one example of how this algorithm works.
+
 
 Initial parameters::
 
@@ -97,13 +109,18 @@ Loop 3::
 Loop 4::
 
     start   ↓ 
-          [ 1, 3, 10, 20, 6, 50 ] current_sum = 14
+          [ 1, 3, 10, 20, 6, 50 ] current_sum = 34
     end               ↑
 
     start   ↓
           [ 1, 3, 10, 20, 6, 50 ] current_sum = 40
     end                   ↑
 
+During this loop the algorithm begins to move the *start* position forward
+while the *end* position remains fixed. This is because we can't add any more
+elements going forward, the current sum exceeds desired sum, so we have to
+remove some of the earlier elements from the sum and reduce the size of our
+window. The algorithm can also move the *end* position forward if the 
 
 Loop 5::
 
