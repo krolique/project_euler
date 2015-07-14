@@ -6,9 +6,8 @@ thinking we may use these two words interchangeably. However their meaning is
 quite different depending upon what do you actually mean. The answer comes down
 to a simple few questions.
 
-    1. Does the order matter?
-
-    2. Are repetitions allowed?
+1. Does the order matter?
+2. Are repetitions allowed?
 
 What's the Difference?
 ----------------------
@@ -27,7 +26,6 @@ and now lets look at the other noun definition::
 
     combination |ˌkämbəˈnāSHən|
     noun
-
     1.  
         - a joining or merging of different parts or qualities in which the
         component elements are individually distinct: a combination of
