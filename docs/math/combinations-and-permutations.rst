@@ -32,20 +32,7 @@ Permutations
 Order matters, order matters, order matters (in that order!)
 
 
-Repetitions
-~~~~~~~~~~~
-When repetitions are allowed, we can pick the number 7 from a set of digits in
-each of our choices, we can use the following formula to figure out the number
-of permutations with repetitions::
 
-    n * n * n + ... + n = n ^ x
-
-No Repetitions
-~~~~~~~~~~~~~~
-If repetitions of elements in each permutation are not allowed we are faced with
-a reduces set on items to chose from at each iteration::
-
-    n * (n - 1) * (n - 2) + ... + (n - r)
 
 This can be written as a formula in the following fashion::
 
@@ -58,22 +45,6 @@ Combinations
 We don't care about positions of each choice! We don't care about the position
 of each choice! (like totally!)
 
-Repetitions
-~~~~~~~~~~~
-
-     (n + r - 1)!
-    --------------
-    r! * (n - 1)!
-
-
-No Repetitions
-~~~~~~~~~~~~~~
-If repetitions are not allowed the number of combinations is broken down as
-follows::
-
-             n!
-        -------------
-        r! * (n - r)!
 
 Also known as `Binomial Coefficient`, and this equation is just like
 permutations with the added effect of removing the number of time each
