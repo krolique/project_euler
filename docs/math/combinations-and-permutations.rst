@@ -47,7 +47,7 @@ dictionary definitions for the two nouns::
 
 What distinguishes one noun from the other is the concern for the arrangement
 of elements. If the arrangement of numbers 123 is the same as
-321 when you are counting with combinations otherwise its permutations.
+321 when you are counting number of combinations otherwise its permutations.
 
 What Are Permutations
 ---------------------
@@ -113,7 +113,7 @@ be used again. For instance::
                                                    [c, b, a]
                                                    [b, c, a]
 
-Continuing with our previous example where we have a set of 4 digits and want 
+Continuing with our previous example where we have a list of 4 digits and want 
 to pick 2 items but this time without repetitions.
 
 Let's say we picked **1** then our options for the next number are limited to 
@@ -254,22 +254,22 @@ To find a general formula we must achieve the following::
         [A♤,  K♤, Q♤, J♤, J♤] and [A♤,  K♤, K♤, J♤, 10♤])
 
 
-We should be able to use the permutations formula to achieve object #1::
+We should be able to use the permutations formula to achieve objective #1::
 
         n!          13!       13!
     ––––––––– = –––––––––– = ––––– = 154440
      (n - r)!    (13 - 5)!    8!
 
-Object #2 can be achieved by using the same permutations formula. Because we are
-trying to remove the number of ordered arrangements within a given had of 5
-cards::
+Objective #2 can be achieved by using the same permutations formula. Because 
+we are trying to remove the number of ordered arrangements within a given hand
+of 5 cards::
 
         n!          5!       5!
     ––––––––– = –––––––––– = –– = 120
      (n - r)!    (5 - 5)!    0!
 
-Putting this all together we are trying calculate a ratio of ordered arrangements 
-each hand and the ordered arrangements of total set::
+Putting objective #1 and #2 together should yield a way to remove the unwanted
+combinations. Let's state these two in a more precise form::
 
               P(n, r)        where P = # of permutations, C = # of combinations,
   C(n, r) = ––––––––––       n = # of items in the list and r = # of choices
@@ -289,9 +289,9 @@ combination without repetitions::
 This formula is also known as `Binomial Coefficient` and the number of
 combinations given the set of 13 cards without repetitions is::
 
-            P(13, 5)      13!         13!     13 * 12 * 11 * 10 * 9
-C(13, 5) = ––––––––– = –––––––––– = ––––––– = –––––––––––––––––––––– = 1287
-            P(5, 5)    5!(13-5)!    5!* 8!    5 * 4 * 3 * 2 * 1
+                P(13, 5)      13!         13!     13 * 12 * 11 * 10 * 9
+    C(13, 5) = ––––––––– = –––––––––– = ––––––– = –––––––––––––––––––––– = 1287
+                P(5, 5)    5!(13-5)!    5!* 8!    5 * 4 * 3 * 2 * 1
 
 
 If repetitions are not allowed the number of combinations we can use the 
