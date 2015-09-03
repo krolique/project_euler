@@ -1,18 +1,13 @@
 Combinations and Permutations
 =============================
-There are often enough times when you may wander how many possible combinations
-(or permutations [the distinction will be made clearer a bit later]) can be made
-when you arrange things in a given list. Without thinking we may use
-combinations and permutations as nouns interchangeably. However their meaning 
-is quite different depending upon what you actually mean and the distinction
-between the two is made by answering the following questions:
-
-1. Does the order matter?
-2. Are repetitions allowed?
+Combinations and permutations are the different ways we can count arrangements
+of items. Combinations and permutations have special and distinct meanings that 
+we should understand. 
 
 The Distinction
 ---------------
-Lets look at the nouns in the dictionary::
+We can find the distinction between Combinations and Permutations by reading
+dictionary definitions for the two nouns::
 
     permutation |ˌpərmyo͝oˈtāSHən|
     noun
@@ -50,77 +45,85 @@ Lets look at the nouns in the dictionary::
     3.  Mathematics a selection of a given number of elements from a larger
         number without regard to their arrangement.
 
+What distinguishes one noun from the other is the concern for the arrangement
+of elements. If the arrangement of numbers 123 is the same as
+321 when you are counting with combinations otherwise its permutations.
 
-Disregard for order becomes apparent from the definition of `combinations`.
-The sub definition #3 in which we are told in mathematics the order of items
-in a combination DOES NOT MATTER. Ta-Da!
+What Are Permutations
+---------------------
+Permutations are unique arrangement of choices chosen from a predefined list
+of items. By saying **unique** we are implying the arrangement of elements does
+matters to us and we are concerned how things are arranged.
 
-If 123 is the same as 321 then we are going to count combinations. When
-123 is not the same as 321 (such as a computer password) then we are going to
-count permutations. 
+Permutations With Repetitions
+-----------------------------
+Permutations with repetitions are unique arrangements where a choice may appear
+more one once. For instance::
 
-Permutations
-------------
-Repeat after me: Order matters, order matters, order matters (in that order!).
-Once this little bit of news settles or galvanizes we can then narrow down
-counting ordered things with and without repetitions (without repetitions we
-can only see an item from our ordered list [also called a set] only once) as
-you will see in a little bit is slightly different from one another.
+    Given:  [a, b, c]
 
+    Possible permutations with repetitions:     [a, a, a]
+                                                [a, b, a]
+                                                [c, c, a]
 
-Repetitions
------------
-Say we are asked to find how many possible permutations are there given that
-we have a list of items (apple, banana, pear would be one such list) and we want
-to pick anywhere between one to all the items from this list?
+Let's derive a general rule for figuring out the number of permutations with
+repetitions. Let's begin with the following example::
 
-Let's run through one example. If you had to deal with just a simple list of 
-4 digits::
+    Given:  [1, 2, 3, 4]
+    Find: How many possible two-choice items are possible from the list?
 
-    [1, 2, 3, 4]
-
-and you wanted to pick only 2 things from it while not worrying if you see any
-number twice. Then the possible list of tuples for this could be::
+We are tasked with finding how many ways can you arrange 2 things from this
+list with repetitions. The possible two-choice arrangements would be::
 
     [1, 1] [1, 2] [1, 3] [1, 4]
     [2, 1] [2, 2] [2, 3] [2, 4]
     [3, 1] [3, 2] [3, 3] [3, 4]
     [4, 1] [4, 2] [4, 3] [4, 4]
 
-If you did the all work and counted the possible tuples you should have reach a
-conclusion that there are 16 possible combinations given the two premises.
-Great! You can count and definitely arrange things. However once the number of
-items in the list increases and perhaps the number of choices as well you may
-find it laborious to count and arrange so many things. In fact you may even
-abandon the idea and pursue a more leisurely activity. Unless! Unless there is
-a theory of generalitivity (I know it's not a word, and I know it's terrible
-to make inside jokes at the expense of time-space continuum)!
+Counting all the two-choice arrangements will reveal that there are 16
+possible pairs. This approach is a bit lengthy, write out and then count
+possible pairs and **"there must be a better way"** © Raymond Hettinger.
+There is. 
 
-Let's begin this process by looking at how we can just reason about items
-in the list and their arrangments. One initial derivation from the previous
-example can be made: we have a 4 by 4 grid out of which we can form 16
-possible choices. Which can state mathematically as follows::
+The possible hint as to a better way of doing this may come from looking at
+the matrix of possible choices and realizing you can get the total count, 
+sixteen, by multiplying **4 by 4**. Further deduction from applying this
+approach may reveal the following pattern::
 
     n * n
 
-Each **n** for each pick from the set. Knowing this we can derive a general
-rule that looks like this::
+This formula can work with 1, 2, 3 or any number choices and the general rule 
+for **r** number of choices from **n** number of things looks like this::
 
-    n * n * n + ... + n = n ^ x
+    n * n * n * ... = n ^ r
 
-No Repetitions
---------------
+This is it, just multiply the number of choices by the number of times you are
+asked to make a choice. This is the simplest case of figuring out unique item
+arrangements. The next section is a bit more involved as we will have to figure
+out how to count while excluding repetitions.
+
+Permutations Without Repetitions
+--------------------------------
+Permutations without repetitions are unique arrangements where a choice may not
+be used again. For instance::
+
+    Given:  [a, b, c]
+
+    Possible permutations without repetitions:     [a, b, c]
+                                                   [c, b, a]
+                                                   [b, c, a]
+
 Continuing with our previous example where we have a set of 4 digits and want 
-to pick 2 items but without repetions (if first chocie was 2 then the next
-choice cannot be 2)
+to pick 2 items but this time without repetitions.
 
-Let's say we picked **1** then our options for the next number are 2, 3 or 4
-or the following tuples::
+Let's say we picked **1** then our options for the next number are limited to 
+just: 2, 3 or 4. Because **1** cannot be selected again. Here is a list of
+possible two-choice arrangements::
 
     [1, 2] [1, 3] [1, 4]
     
 Thus given the first choice we can only pick from a set of 3 items for the next
-choice or more precisely stated::
+choice or more precisely::
 
     (n - 1)
     
@@ -133,74 +136,168 @@ be reduced by the previous number of choices made::
            ↑
            3 items to chose from
 
-We again can generalize this pattern as a rule that looks like the following::
+We again can generalize this pattern as a rule that looks like the this::
 
-    n * (n - 1) * (n - 2) + ... + (n - r) [where r is the remaining choices]
+    n * (n - 1) * (n - 2) + ... + (n - r) [where r are the remaining choices]
 
-Let's work an example, say we have 5 digits and we wanted to compute how
-many permutations we can make from the whole set and if we chose only 3::
+Introspection into how each two-choice selection reduces the number of
+remaining candidates will helps us understand how to construct the formula
+for the general case. But before we get there we need to grasp a few more
+concepts.
 
-    5 * 4 * 3 * 2 * 1 = 120 [choosing 5 items without repetitions]
-    5 * 4 * 3         = 60  [choosing 3 out of 5 total items without repetitions]
+Let's workout another example to better understand what is happening to our
+choices, because item-choice eliminations is what we are trying to establish.
+Comparing permutations with and without repetitions should shed some light into
+how we count possible permutations.
 
-This observation may or many not lead you to an even better formula for 
-figuring out permutations without repetitions. First observe that::
+Let's by way of an example say we have 5 digits and we wanted to compute how
+many permutations we can make from the whole set if we can pick only 3 items
+with and without repetitions::
+
+    5 * 4 * 3 * 2 * 1 = 120 [total choices with 5 items with repetitions]
+    5 * 4 * 3         = 60  [total choices with 5 items but no repetitions]
+
+The way we compute total choices without repetitions where we multiply each
+number until exhaustion is actual a concept that you should either know or 
+quickly ingest. More generally the way to express multiplying number one 
+through n is generally know as this::
 
     5 * 4 * 3 * 2 * 1 = 5! [pronounced fakˈtôrēəl]
 
-Which we can compute rather quickly with a calculator/browser/pre-computed 
-tables. Second think how we can remove the choices that we don't want to 
-account for (we're not going to pick further than 3) from that number. If we 
-can do that we're left with just the number of permutations we are going to
-have to count. This can be written as follows::
+Factorials have a nice way of simplifying common mathematical operations
+without "unfolding" the actual operations we are required to perform. For
+instance we can compute from know values of factorials the following::
 
-    5 * 4 * 3 * 2 * 1     120
-    -----------------  =  --- = 60
-    2 * 1                  2
+       5!       5 * 4 * 3 * 2 * 1    
+    –––––––– = ––––––––––––––––––– = 5 * 4 = 20
+     (5-2)!             3 * 2 * 1
 
-Interesting right? So the top portion looks like can be written like this::
+Diverting our attention back from the factorial abstraction and focusing on the
+actual application. The factorial representation can help us 
+quickly calculate choices and in this case remove unwanted choices from
+calculations. The break down of what we're doing is as follows::
 
-    (number of choices)!
+    5 * 4 * 3 * 2 * 1                ← number of choices with repetitions
+    –––––––––––––––––  = 5 * 4 = 20  ← remaining choices without repetitions
+            3 * 2 * 1                ← number of choices excluded by 
+                                       repetitions
 
-But what about the bottom **2 * 1**? The remainder can be stated as total
-choices minus the choices we're going to make and slap a factorial symbol
-on it.
+Our formula should be able to calculate total number of permutations and remove
+unwanted repetitive combinations. 
+
+Which is what  have seen by means of representing
+as a ration of factorial number can be written as total divided by exclusions.
+The total portion looks like it can be written like this::
+
+    (total number of choices)!
+
+and the exclusions can be the choices we don't want to count (no repetitions)::
+
+    (total number of choices - repetitions)!
 
 Putting this all together our formula will look like this::
 
             n!
-        ---------
+        –––––––––
          (n - r)!
 
-And that's all there is to it, for permutations (ORDER MATTERS) then figure out
-if repetitions are allowed and if so how to remove the unused permutations.
+And that's all there is to it, for permutations (ORDER MATTERS) without
+repetitions we must remove repetitions in out total calculations.
 
-Combinations
-------------
-We don't care about positions of each choice! We don't care about the position
-of each choice! (like totally!)
+What Are Combinations
+---------------------
+Combinations are arraignments of choices from a given list where the order doesn't
+matter. For instance [1, 2, 3] and [3, 2, 1] are the same combination (if in 
+fact we are dealing with combinations).
 
-Repetitions
------------
-With repetions use the following formula::
+Combinations With Repetitions
+-----------------------------
+Combination with repetitions are arrangements of items where order does not
+matter and we can select the same choice as many times as we would like to.
+For instance::
+
+    Given: [a, b, c, d, e]
+    Possible combinations: [a, a, c]
+                           [b, a, c]
+                           [c, c, c]
+
+
+With repetitions use the following formula::
 
      (n + r - 1)!
-    --------------
+    –––––––––––––
     r! * (n - 1)!
 
 
-No Repetitions
---------------
-If repetitions are not allowed the number of combinations is broken down as
-follows::
+Combinations Without Repetitions
+--------------------------------
+Combination without repetitions are arrangements of items where order does not
+matter and we cannot repeat the same choice again. For instance::
 
-             n!
-        -------------
-        r! * (n - r)!
+    Given:  [A♤, K♤, Q♤, J♤, 10♤, 9♤, 8♤, 7♤, 6♤, 5♤, 4♤, 3♤, 2♤]
 
-Also known as `Binomial Coefficient`, and this equation is just like
-permutations with the added effect of removing the number of time each
-combination could be in order
+    Possible 5-card combinations without repetitions: [A♤,  K♤, Q♤, J♤, 10♤]
+                                                      [10♤, 9♤, 8♤, 7♤,  6♤]
+                                                      [6♤,  5♤, 4♤, 3♤,  2♤]
+
+Observe that in combination of cards this hand [A♤,  K♤, Q♤, J♤, 10♤] should be
+considered the same as this [10♤, A♤, K♤, Q♤, J♤] (order does not matter) and 
+we cannot pick another card from the set twice. Choosing K♤ as first choice 
+will prevent us from selecting this card again.
+
+To find a general formula we must achieve the following::
+
+    1.  Remove the number of items uniquely ordered.
+        (i.e. the 5 pair hand [A♤,  K♤, Q♤, J♤, 10♤] and  [10♤, A♤, K♤, Q♤, J♤]
+        should be only counted once)
+    2.  Remove the number of duplicate choices within a given hand. (i.e.
+        [A♤,  K♤, Q♤, J♤, J♤] and [A♤,  K♤, K♤, J♤, 10♤])
 
 
+We should be able to use the permutations formula to achieve object #1::
+
+        n!          13!       13!
+    ––––––––– = –––––––––– = ––––– = 154440
+     (n - r)!    (13 - 5)!    8!
+
+Object #2 can be achieved by using the same permutations formula. Because we are
+trying to remove the number of ordered arrangements within a given had of 5
+cards::
+
+        n!          5!       5!
+    ––––––––– = –––––––––– = –– = 120
+     (n - r)!    (5 - 5)!    0!
+
+Putting this all together we are trying calculate a ratio of ordered arrangements 
+each hand and the ordered arrangements of total set::
+
+              P(n, r)        where P = # of permutations, C = # of combinations,
+  C(n, r) = ––––––––––       n = # of items in the list and r = # of choices
+              P(r, r)        from the list
+
+Let's combine the two permutation equations into a single equation for
+combination without repetitions::
+
+                              n!        * Notice (r - r) = 0 and 0! = 1
+                           ––––––––
+              P(n, r)      (n - r)!        n!      (r - r)!       n!
+  C(n, r) =  ––––––––– = –––––––––––– = –––––––– * –––––––– = –––––––––––
+              P(r, r)       (r)!       (n - r)!      (r)!     r!(n - r)!
+                          ––––––––
+                          (r - r)!
+
+This formula is also known as `Binomial Coefficient` and the number of
+combinations given the set of 13 cards without repetitions is::
+
+            P(13, 5)      13!         13!     13 * 12 * 11 * 10 * 9
+C(13, 5) = ––––––––– = –––––––––– = ––––––– = –––––––––––––––––––––– = 1287
+            P(5, 5)    5!(13-5)!    5!* 8!    5 * 4 * 3 * 2 * 1
+
+
+If repetitions are not allowed the number of combinations we can use the 
+following formula::
+
+         n!   
+    –––––––––––––
+    r! * (n - r)!
     
