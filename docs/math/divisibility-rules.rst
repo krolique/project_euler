@@ -34,4 +34,3 @@ still left with the ambiguous number you can apply the rule again.
 +------------------------+--------------------------------------------+
 |           12           | The number is divisible by both 3 and 4    |
 +------------------------+--------------------------------------------+
-

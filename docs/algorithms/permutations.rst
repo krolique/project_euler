@@ -2,8 +2,8 @@ Permutations
 ============
 The permutations problem is as follows::
 
-    Given: "ABC"
-    Answer: "ABC", "ACB", "BAC", "BCA", "CAB", "CBA"
+    Given:  'ABC'
+    Answer: ['ABC', 'ACB', 'BAC', 'BCA', 'CAB', 'CBA'
 
 
 
@@ -15,3 +15,15 @@ The permutations problem is as follows::
         for i, v in enumerate(seq):
             for p in permutations(seq[0:i] + seq[i+1:], permutation + [seq[i]]):
                 yield p
+
+
+step 1::
+
+    ['a', 'b', 'c']
+
+    ['a'] ['b', 'c']
+
+
+
+
+

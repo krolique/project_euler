@@ -19,26 +19,24 @@
 
 """
 
-t = lambda x: x*(x+1)/2
-p = lambda x: x*(3*x-1)/2
-h = lambda x: x*(2*x-1)
 
-
-def problem():
+def problem_45():
     """ Attempt to solve the problem... """
 
-    print 'problem #45'
+    tri_num = lambda x: x*(x+1)/2
+    pen_num = lambda x: x*(3*x-1)/2
+    hex_num = lambda x: x*(2*x-1)
+
     t_0 = 286
     p_0 = 166
     h_0 = 144
-    triangle_number = 40755
+    triangle_number = []
 
     for x in xrange(100000):
-
         inc = 100000
-        l1 = set(t(x) for x in xrange(t_0, inc+1))
-        l2 = set(p(x) for x in xrange(p_0, inc+1))
-        l3 = set(h(x) for x in xrange(h_0, inc+1))
+        l1 = set(tri_num(x) for x in xrange(t_0, inc+1))
+        l2 = set(pen_num(x) for x in xrange(p_0, inc+1))
+        l3 = set(hex_num(x) for x in xrange(h_0, inc+1))
 
         if l1.intersection(l2).intersection(l3):
             triangle_number = l1.intersection(l2).intersection(l3)
@@ -47,8 +45,11 @@ def problem():
         p_0 += inc
         h_0 += inc
 
-    print 'next triangle number is %d' % triangle_number.pop()
+    return triangle_number.pop()
 
 if __name__ == "__main__":
 
-    problem()
+    print 'problem #45'
+    ANSWER = problem_45()
+    print 'The next triangle number that is pentagonal and hexagonal '\
+            'is: %d' % ANSWER

@@ -11,13 +11,13 @@
 """
 
 
-def problem():
+def problem_48():
     """ Attempt to solve the problem... """
 
-    print 'problem #48'
-    digits = str(sum(x**x for x in range(1, 1001)))[-10:]
-    print 'the sum of last ten digits are %s' % digits
+    return int(str(sum(x**x for x in range(1, 1001)))[-10:])
 
 if __name__ == "__main__":
 
-    problem()
+    print 'problem #48'
+    ANSWER = problem_48()
+    print 'The sum of last ten digits of the series is: %d' % ANSWER

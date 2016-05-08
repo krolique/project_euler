@@ -5,7 +5,6 @@
      / /   / __ \/ __ `__ \/ __ `__ \/ __ \/ __ \
     / /___/ /_/ / / / / / / / / / / / /_/ / / / /
     \____/\____/_/ /_/ /_/_/ /_/ /_/\____/_/ /_/
-    ----------------------------------------------
 
     Contains shared code and other wonderful things. This isn't like a trash
     bin for misfits of computer science but rather stuff that can be thought
