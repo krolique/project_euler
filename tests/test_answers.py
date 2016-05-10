@@ -21,6 +21,7 @@ from problem_046_goldbachs_other_conjecture import problem_46
 from problem_047_distinct_primes_factors import problem_47
 from problem_048_self_powers import problem_48
 from problem_050_consecutive_prime_sum import problem_50
+from problem_052_permuted_multiples import problem_52
 
 
 def test_answers():
@@ -39,3 +40,4 @@ def test_answers():
     assert problem_47() == 134043
     assert problem_48() == 9110846700
     assert problem_50() == 997651
+    assert problem_52() == 142857
