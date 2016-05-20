@@ -12,8 +12,8 @@ Properties
 ----------
 +--------------------------------+-----------+
 | Characteristic                 |  Big-O    |
-+================================+===========+
-| Worst case (space complexity)  |  O(1)     |
++--------------------------------+-----------+
+| Worst case (Space Complexity‎)  |  O(1)     |
 +--------------------------------+-----------+
 | Best case                      |  O(1)     |
 +--------------------------------+-----------+
@@ -40,10 +40,6 @@ Pseudo Code::
     Step 6: If A(m) = T, the search is done; return m.
 
 
-Implementation
---------------
-
-The following is a basic binary search procedure written in python
 
 .. code:: python
 
@@ -74,8 +70,8 @@ Initial parameters::
 We begin the procedure by setting the value for L to 0, R to 5 (length of the
 array is 6 and 6 - 1 is 5) and M to 2 ( taking the floor of (0 + 5)/2 gives us
 2) [Step 1] and begin our iteration over Steps 2 - 6. Since 0(L) < 2(R we 
-continue to Step 3 and assign M the value of 2. Steps 1, 2 and 3 will be omitted
-from all subsequent examples as the author finds copying this line laborious and
+continue to Step 3 and assign M the value of 2. Steps 1, 2 and 3 will be ommited
+from all subsequent examples as the author finds copying this line laborius and
 redundant.
 
 Loop 1::
@@ -101,7 +97,7 @@ Loop 2::
                           R(5)
     end
 
-Array value at A(4) is 23 and 23 is the number we are looking for enabling us
+Array value at A(4) is 23 and 23 is the number we are looking for enablind us
 to terminate the procedure by returning [Step 6] 4 as the index at which the
 value exists.
 
@@ -151,10 +147,10 @@ Loop 3::
 At this point Step 2 should be mentioned as the condition `<` will not
 terminate the loop simply because 5 is not greater than 5. So we continue to the
 next step. Array value at A(5) is 50 and 50 is the number we are looking for
-enabling us to terminate the procedure by returning [Step 6] 5 as the index at
+enablind us to terminate the procedure by returning [Step 6] 5 as the index at
 which the value exists.
 
-Example #3 where the value if in the beginning the array
+Example #3 where the value if in the beggining the array
 
 Initial parameters::
 
@@ -190,11 +186,11 @@ The value for M is set to zero because::
     ------- = ------- = ---, after taking the floor(0.5) we get 0
        2         2       2
 
-Array value at A(0) is 1 and 1 is the number we are looking for enabling us to
+Array value at A(0) is 1 and 1 is the number we are looking for enablind us to
 terminate the procedure by returning [Step 6] 5 as the index at which the value
 exists.
 
-Example #4 where the value if in the left half the array
+Example #4 where the value if in the left helf the array
 
 Initial parameters::
 
@@ -238,6 +234,6 @@ Loop 3::
               R(1)
     end
 
-Array value at A(1) is 3 and 3 is the number we are looking for enabling us to
+Array value at A(1) is 3 and 3 is the number we are looking for enablind us to
 terminate the procedure by returning [Step 6] 5 as the index at which the value
 exists.
