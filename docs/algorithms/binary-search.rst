@@ -11,7 +11,7 @@ repeated in the remaining subarray until it is successful.
 Properties
 ----------
 
-The following table describes the limiting behavior of a algorithm when the
+The following table describes the limiting behavior of an algorithm when the
 argument tends towards a particular value or infinity
 
 +---------+------------------+
@@ -45,7 +45,7 @@ Pseudo Code::
 Implementation
 --------------
 
-The following is a basic binary search procedure written in python
+The following is a basic binary search function written in python
 
 .. code:: python
 
