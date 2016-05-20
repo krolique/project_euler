@@ -14,15 +14,15 @@ Properties
 The following table describes the limiting behavior of a algorithm when the
 argument tends towards a particular value or infinity
 
-  +---------+------------------+
-  | Case    |  Time Complexity |
-  +=========+==================+
-  | Best    |  O(1)            |
-  +---------+------------------+
-  | Average |  O(log n)        |
-  +---------+------------------+
-  | Worst   |  O(log n)        |
-  +---------+------------------+
++---------+------------------+
+| Case    |  Time Complexity |
++=========+==================+
+| Best    |  O(1)            |
++---------+------------------+
+| Average |  O(log n)        |
++---------+------------------+
+| Worst   |  O(log n)        |
++---------+------------------+
 
 
 Procedure
