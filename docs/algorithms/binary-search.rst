@@ -10,17 +10,19 @@ repeated in the remaining subarray until it is successful.
 
 Properties
 ----------
-+--------------------------------+-----------+
-| Characteristic                 |  Big-O    |
-+================================+===========+
-| Worst case (space complexity)  |  O(1)     |
-+--------------------------------+-----------+
-| Best case                      |  O(1)     |
-+--------------------------------+-----------+
-| Average case                   |  O(log n) |
-+--------------------------------+-----------+
-| Worst case performance‎)        |  O(log n) |
-+--------------------------------+-----------+
+
+The following table describes the limiting behavior of a algorithm when the
+argument tends towards a particular value or infinity
+
+  +---------+------------------+
+  | Case    |  Time Complexity |
+  +=========+==================+
+  | Best    |  O(1)            |
+  +---------+------------------+
+  | Average |  O(log n)        |
+  +---------+------------------+
+  | Worst   |  O(log n)        |
+  +---------+------------------+
 
 
 Procedure
@@ -65,7 +67,7 @@ The following is a basic binary search procedure written in python
 
 Lets run through a few examples and see how the algorithm actually works.
 
-Example #1 where the value if in the right half of the array
+Example #1 where the target is in the right half of the array
 
 Initial parameters::
 
@@ -105,7 +107,7 @@ Array value at A(4) is 23 and 23 is the number we are looking for enabling us
 to terminate the procedure by returning [Step 6] 4 as the index at which the
 value exists.
 
-Example #2 where the value if in the end the array
+Example #2 where the target at the end the array
 
 Initial parameters::
 
@@ -154,7 +156,7 @@ next step. Array value at A(5) is 50 and 50 is the number we are looking for
 enabling us to terminate the procedure by returning [Step 6] 5 as the index at
 which the value exists.
 
-Example #3 where the value if in the beginning the array
+Example #3 where the target is in the beginning the array
 
 Initial parameters::
 
@@ -194,7 +196,7 @@ Array value at A(0) is 1 and 1 is the number we are looking for enabling us to
 terminate the procedure by returning [Step 6] 5 as the index at which the value
 exists.
 
-Example #4 where the value if in the left half the array
+Example #4 where the target is in the left half the array
 
 Initial parameters::
 
