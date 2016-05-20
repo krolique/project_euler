@@ -61,34 +61,179 @@ Pseudo Code::
 
 Lets run through a few examples and see how the algorithm actually works.
 
+Example #1 where the value if in the right half of the array
+
 Initial parameters::
 
     Given: [1, 3, 10, 20, 23, 50] and 23
 
+We begin the procedure by setting the value for L to 0, R to 5 (length of the
+array is 6 and 6 - 1 is 5) and M to 2 ( taking the floor of (0 + 5)/2 gives us
+2) [Step 1] and begin our iteration over Steps 2 - 6. Since 0(L) < 2(R we 
+continue to Step 3 and assign M the value of 2. Steps 1, 2 and 3 will be omitted
+from all subsequent examples as the author finds copying this line laborious and
+redundant.
+
 Loop 1::
 
     start
-           L     M
+           L(0)  M(2)
            ↓     ↓
           [1, 3, 10, 20, 23, 50]
                          ↑
-                         R
+                         R(5)
     end
 
-We increment left (Step 4) by middle index + 1, which would be 3
+Array value at A(2) is 10 and 10 < 23, we increment L [Step 4] by M + 1 and 
+continue onto the next loop. Returning to Step 2 in algorithm execution.
 
 Loop 2::
 
     start
-                     L   M
-                     ↓   ↓
+                     L(3) M(4)
+                     ↓    ↓
           [1, 3, 10, 20, 23, 50]
-                         ↑
-                         R
+                          ↑
+                          R(5)
     end
 
-Because the value at index 4 is exactly the value we are looking for the
-procedure returns index 4
+Array value at A(4) is 23 and 23 is the number we are looking for enabling us
+to terminate the procedure by returning [Step 6] 4 as the index at which the
+value exists.
 
+Example #2 where the value if in the end the array
 
+Initial parameters::
 
+    Given: [1, 3, 10, 20, 23, 50] and 50
+
+Loop 1::
+
+    start
+           L(0)  M(2)
+           ↓     ↓
+          [1, 3, 10, 20, 23, 50]
+                         ↑
+                         R(5)
+    end
+
+Array value at A(2) is 10 and 10 < 50, we set the value of L [Step 4] to M + 1
+and continue onto the next loop. Returning to Step 2 in algorithm execution.
+
+Loop 2::
+
+    start
+                     L(3) M(4)
+                     ↓    ↓
+          [1, 3, 10, 20,  23, 50]
+                          ↑
+                          R(5)
+    end
+
+Array value at A(4) is 23 and 23 < 50, we set the value of L [Step 4] to M + 1
+and continue onto the next loop. Returning to Step 2 in algorithm execution.
+
+Loop 3::
+
+    start
+                             M(5)
+                             L(5)
+                             ↓
+          [1, 3, 10, 20, 23, 50]
+                          ↑
+                          R(5)
+    end
+
+At this point Step 2 should be mentioned as the condition `<` will not
+terminate the loop simply because 5 is not greater than 5. So we continue to the
+next step. Array value at A(5) is 50 and 50 is the number we are looking for
+enabling us to terminate the procedure by returning [Step 6] 5 as the index at
+which the value exists.
+
+Example #3 where the value if in the beginning the array
+
+Initial parameters::
+
+    Given: [1, 3, 10, 20, 23, 50] and 1
+
+Loop 1::
+
+    start
+           L(0)  M(2)
+           ↓     ↓
+          [1, 3, 10, 20, 23, 50]
+                         ↑
+                         R(5)
+    end
+
+Array value at A(2) is 10 and 10 > 1, we set the value of R [Step 5] to M - 1
+and continue onto the next loop. Returning to Step 2 in algorithm execution.
+
+Loop 2::
+
+    start
+           M(0)
+           L(0)
+           ↓
+          [1, 3, 10, 20, 23, 50]
+              ↑
+              R(1)
+    end
+
+The value for M is set to zero because::
+
+    (L + R)   (0 + 1)    1
+    ------- = ------- = ---, after taking the floor(0.5) we get 0
+       2         2       2
+
+Array value at A(0) is 1 and 1 is the number we are looking for enabling us to
+terminate the procedure by returning [Step 6] 5 as the index at which the value
+exists.
+
+Example #4 where the value if in the left half the array
+
+Initial parameters::
+
+    Given: [1, 3, 10, 20, 23, 50] and 3
+
+Loop 1::
+
+    start
+           L(0)  M(2)
+           ↓     ↓
+          [1, 3, 10, 20, 23, 50]
+                         ↑
+                         R(5)
+    end
+
+Array value at A(2) is 10 and 10 < 3, we set the value of R [Step 5] to M - 1
+and continue onto the next loop. Returning to Step 2 in algorithm execution.
+
+Loop 2::
+
+    start
+           M(0)
+           L(0)
+           ↓
+          [1, 3, 10, 20, 23, 50]
+              ↑
+              R(1)
+    end
+
+Array value at A(0) is 1 and 1 > 3, we set the value of L [Step 4] to M + 1
+and continue onto the next loop. Returning to Step 2 in algorithm execution.
+
+Loop 3::
+
+    start
+              M(1)
+              L(1)
+              ↓
+          [1, 3, 10, 20, 23, 50]
+              ↑
+              R(1)
+    end
+
+Array value at A(1) is 3 and 3 is the number we are looking for enabling us to
+terminate the procedure by returning [Step 6] 5 as the index at which the value
+exists.
