@@ -7,24 +7,6 @@ value to the middle element of the array; if they are unequal, the lower or
 upper half of the array is eliminated depending on the result and the search is
 repeated in the remaining subarray until it is successful.
 
-
-Properties
-----------
-
-The following table describes the limiting behavior of an algorithm when the
-argument tends towards a particular value or infinity
-
-+---------+------------------+
-| Case    |  Time Complexity |
-+=========+==================+
-| Best    |  O(1)            |
-+---------+------------------+
-| Average |  O(log n)        |
-+---------+------------------+
-| Worst   |  O(log n)        |
-+---------+------------------+
-
-
 Procedure
 ---------
 Given an array A of n elements with values or records A(0)...A(n−1) and target
@@ -41,10 +23,8 @@ Pseudo Code::
     Step 5: If A(m) > T, set R to m − 1 and go to step 2.
     Step 6: If A(m) = T, the search is done; return m.
 
-
 Implementation
 --------------
-
 The following is a basic binary search function written in python
 
 .. code:: python
@@ -74,11 +54,11 @@ Initial parameters::
     Given: [1, 3, 10, 20, 23, 50] and 23
 
 We begin the procedure by setting the value for L to 0, R to 5 (length of the
-array is 6 and 6 - 1 is 5) and M to 2 ( taking the floor of (0 + 5)/2 gives us
-2) [Step 1] and begin our iteration over Steps 2 - 6. Since 0(L) < 2(R we 
-continue to Step 3 and assign M the value of 2. Steps 1, 2 and 3 will be omitted
-from all subsequent examples as the author finds copying this line laborious and
-redundant.
+array is 6 and 6 - 1 is 5) and M to 2 ( taking the floor of (0 + 5)/2 which
+gives us 2) [Step 1] and begin our iteration over Steps 2 - 6. Since
+0(L) < 2(R we continue to Step 3 and assign M the value of 2. Steps 1, 2 and
+3 will be omitted from all subsequent examples as the author finds copying these
+lines laborious and redundant to repeat.
 
 Loop 1::
 
@@ -95,13 +75,11 @@ continue onto the next loop. Returning to Step 2 in algorithm execution.
 
 Loop 2::
 
-    start
                      L(3) M(4)
                      ↓    ↓
           [1, 3, 10, 20, 23, 50]
                           ↑
                           R(5)
-    end
 
 Array value at A(4) is 23 and 23 is the number we are looking for enabling us
 to terminate the procedure by returning [Step 6] 4 as the index at which the
@@ -115,40 +93,34 @@ Initial parameters::
 
 Loop 1::
 
-    start
            L(0)  M(2)
            ↓     ↓
           [1, 3, 10, 20, 23, 50]
                          ↑
                          R(5)
-    end
 
 Array value at A(2) is 10 and 10 < 50, we set the value of L [Step 4] to M + 1
 and continue onto the next loop. Returning to Step 2 in algorithm execution.
 
 Loop 2::
 
-    start
                      L(3) M(4)
                      ↓    ↓
           [1, 3, 10, 20,  23, 50]
                           ↑
                           R(5)
-    end
 
 Array value at A(4) is 23 and 23 < 50, we set the value of L [Step 4] to M + 1
 and continue onto the next loop. Returning to Step 2 in algorithm execution.
 
 Loop 3::
 
-    start
                              M(5)
                              L(5)
                              ↓
           [1, 3, 10, 20, 23, 50]
                           ↑
                           R(5)
-    end
 
 At this point Step 2 should be mentioned as the condition `<` will not
 terminate the loop simply because 5 is not greater than 5. So we continue to the
@@ -164,27 +136,23 @@ Initial parameters::
 
 Loop 1::
 
-    start
            L(0)  M(2)
            ↓     ↓
           [1, 3, 10, 20, 23, 50]
                          ↑
                          R(5)
-    end
 
 Array value at A(2) is 10 and 10 > 1, we set the value of R [Step 5] to M - 1
 and continue onto the next loop. Returning to Step 2 in algorithm execution.
 
 Loop 2::
 
-    start
            M(0)
            L(0)
            ↓
           [1, 3, 10, 20, 23, 50]
               ↑
               R(1)
-    end
 
 The value for M is set to zero because::
 
@@ -204,42 +172,134 @@ Initial parameters::
 
 Loop 1::
 
-    start
            L(0)  M(2)
            ↓     ↓
           [1, 3, 10, 20, 23, 50]
                          ↑
                          R(5)
-    end
 
 Array value at A(2) is 10 and 10 < 3, we set the value of R [Step 5] to M - 1
 and continue onto the next loop. Returning to Step 2 in algorithm execution.
 
 Loop 2::
 
-    start
            M(0)
            L(0)
            ↓
           [1, 3, 10, 20, 23, 50]
               ↑
               R(1)
-    end
 
 Array value at A(0) is 1 and 1 > 3, we set the value of L [Step 4] to M + 1
 and continue onto the next loop. Returning to Step 2 in algorithm execution.
 
 Loop 3::
 
-    start
               M(1)
               L(1)
               ↓
           [1, 3, 10, 20, 23, 50]
               ↑
               R(1)
-    end
 
 Array value at A(1) is 3 and 3 is the number we are looking for enabling us to
 terminate the procedure by returning [Step 6] 5 as the index at which the value
 exists.
+
+Analysis
+--------
+
+You can think of the algorithm as creating a binary tree when its searching
+for targets. For instance given the following::
+
+    Given: [1, 3, 10, 20, 23, 50] and 23
+
+We can then translate the array into possible paths the binary search can
+perform when looking for a specific target::
+
+        10
+       /  \
+      3    23
+     / \   / \
+    1     20 50
+
+So at worst our algorithm can perform 3 (in the current example)
+comparisons to find a specific target. We should be able to quantify this
+property!
+
+Let's begin our analysis by remembering how many nodes are there in a Tree
+data structure::
+
+        10        depth = 0, 2^0 and at maximum we could have 1 targets
+       /  \
+      3    23     depth = 1, 2^1 and at maximum we could have 2 targets
+     / \   / \
+    1     20 50   depth = 2, 2^2 and at maximum we could have 4 targets
+
+We should introduce the concept of a full binary tree through which we will
+reason about our search space (maximum number of search items). Since at most
+we will have a full binary tree to deal with.
+
+Full Binary Tree
+  A full binary tree (sometimes proper binary tree or 2-tree) is a tree in
+  which every node other than the leaves has two children.
+
+We should be able to find total number of nodes by adding together the number
+of targets at each depth::
+
+  2^0 + 2^1 + 2^2 + 2^3 + ... + 2^d
+
+However doing this by hand may prove to be impractical and we can find the
+general solution to the summation by remembering infinite series from
+Calculus::
+
+.. image:: ../images/geometric-series-gen.gif
+
+.. image:: ../images/geometric-series-simple.gif
+
+By plugging in 2 for the value of k we get the following formula::
+
+   1 - 2^(n+1)     1 - 2^(n+1)
+  ------------- = ------------- = (-1) * (1 - 2^(n+1)) = -1 + 2^(n+1) = 2^(n+1) - 1
+      1 - 2            -1
+
+The equation from above gives us a way for find the possible number of nodes
+in a full binary tree::
+
+  n = 2^(d + 1) - 1
+
+where d is depth of the binary tree and n is the number of nodes. Using this
+formula we can solve for d (depth) which enables us to find the longest path
+to finding a target or to put this another way how long will it take for binary
+search to find something in an array of length n!
+
+Let's solve the equation for d::
+
+  n + 1 = 2^(d+1)
+  log(n + 1) = log(2^(d+1))
+  log(n + 1) = (d + 1)*log(2)
+  log(n + 1) = d + 1
+  log(n + 1) - 1 = d
+
+Therefore at most the binary search will need::
+
+  log(n + 1) - 1
+
+comparisons before finding a match!
+
+Properties
+----------
+
+The following table describes the limiting behavior of the algorithm when the
+argument tend(s) towards a particular value or infinity
+
++---------+------------------+
+| Case    |  Time Complexity |
++=========+==================+
+| Best    |  O(1)            |
++---------+------------------+
+| Average |  O(log n)        |
++---------+------------------+
+| Worst   |  O(log n)        |
++---------+------------------+
+
