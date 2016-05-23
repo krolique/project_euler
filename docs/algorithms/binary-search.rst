@@ -236,7 +236,7 @@ First remember/note the depth property of a Tree data structure::
        /  \
       3    23     depth = 1, 2^1 and at depth we could have 2 nodes
      / \   / \
-    1     20 50   depth = 2, 2^2 and at depth we could have 4 targets
+    1     20 50   depth = 2, 2^2 and at depth we could have 4 nodes
 
 At any given depth we can count the maximum number of nodes. By raising 2
 to the power of the depth level, assuming every node is filled in, we know the
