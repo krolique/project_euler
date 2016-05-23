@@ -224,64 +224,96 @@ perform when looking for a specific target::
     1     20 50
 
 So at worst our algorithm can perform 3 (in the current example)
-comparisons to find a specific target. We should be able to quantify this
-property!
+comparisons to find a specific target. This insight will enable us to generalize
+the algorithm run time given any array of sorted integers.
 
-Let's begin our analysis by remembering how many nodes are there in a Tree
-data structure::
+But before we begin, let's introduce/review a few concepts which will become
+useful to proving our conjecture.
 
-        10        depth = 0, 2^0 and at maximum we could have 1 targets
+First remember/note the depth property of a Tree data structure::
+
+        10        depth = 0, 2^0 and at depth we could have 1 node
        /  \
-      3    23     depth = 1, 2^1 and at maximum we could have 2 targets
+      3    23     depth = 1, 2^1 and at depth we could have 2 nodes
      / \   / \
-    1     20 50   depth = 2, 2^2 and at maximum we could have 4 targets
+    1     20 50   depth = 2, 2^2 and at depth we could have 4 targets
 
-We should introduce the concept of a full binary tree through which we will
-reason about our search space (maximum number of search items). Since at most
-we will have a full binary tree to deal with.
+At any given depth we can count the maximum number of nodes. By raising 2
+to the power of the depth level, assuming every node is filled in, we know the
+maximum number of nodes at that depth. Which is not the case in our example.
+However that can be overlooked since we're trying to find the worst case. And
+even on average where some paths are empty we're still approaching this maximum
+limit. 
+
+A binary tree which exhibits this property is called a full binary tree.
 
 Full Binary Tree
   A full binary tree (sometimes proper binary tree or 2-tree) is a tree in
   which every node other than the leaves has two children.
 
-We should be able to find total number of nodes by adding together the number
-of targets at each depth::
+Our goal is to be able to measure a given array of integers and its resultant
+search tree for all/some of the longest paths the algorithm will have to
+traverse to find an answer.
+
+We can begin by finding a total number of nodes by adding together the number
+of nodes at each depth::
 
   2^0 + 2^1 + 2^2 + 2^3 + ... + 2^d
 
-However doing this by hand may prove to be impractical and we can find the
+However doing this by hand may prove to be impractical and we know of a
 general solution to the summation by remembering infinite series from
-Calculus::
+Calculus
 
 .. image:: ../images/geometric-series-gen.gif
 
 .. image:: ../images/geometric-series-simple.gif
 
-By plugging in 2 for the value of k we get the following formula::
+By plugging in 2 for the value of r we get the following formula::
 
-   1 - 2^(n+1)     1 - 2^(n+1)
-  ------------- = ------------- = (-1) * (1 - 2^(n+1)) = -1 + 2^(n+1) = 2^(n+1) - 1
-      1 - 2            -1
+   1 - 2^(n+1)
+  -------------
+      1 - 2
+
+Which can be reduced to a single equation by the following steps::
+
+  (1)       1 - 2^(n+1)
+           -------------
+                -1
+
+  (2)     (-1) * (1 - 2^(n+1))
+
+  (3)     -1 + 2^(n+1)
+
+  (4)     2^(n+1) - 1
 
 The equation from above gives us a way for find the possible number of nodes
-in a full binary tree::
+in a full binary tree (We will substitute n for d from this point forward.
+Because n in the above formula represents the depth of the tree)::
 
   n = 2^(d + 1) - 1
 
-where d is depth of the binary tree and n is the number of nodes. Using this
-formula we can solve for d (depth) which enables us to find the longest path
-to finding a target or to put this another way how long will it take for binary
-search to find something in an array of length n!
+Using this formula we can solve for d (depth) which enables us to find the
+longest path to finding a target or to put this another way how long will it
+take for binary search to find something in an array of length n!
 
 Let's solve the equation for d::
 
-  n + 1 = 2^(d+1)
-  log(n + 1) = log(2^(d+1))
-  log(n + 1) = (d + 1)*log(2)
-  log(n + 1) = d + 1
-  log(n + 1) - 1 = d
+  (1)   n = 2^(d + 1) - 1
 
-Therefore at most the binary search will need::
+  (2)   n + 1 = 2^(d + 1)
+
+  (3)   log(n + 1) = log(2^(d + 1))
+
+  (4)   log(n + 1) = (d + 1) * log(2), Note log(2) = 1 in base 2 system, so we
+                                       can multiply it in
+
+  (5)   log(n + 1) = d + 1
+
+  (6)   log(n + 1) - 1 = d
+
+  (7)   d = log(n + 1) - 1
+
+Therefore at most the binary search will make::
 
   log(n + 1) - 1
 
