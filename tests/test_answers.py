@@ -22,6 +22,7 @@ from problem_047_distinct_primes_factors import problem_47
 from problem_048_self_powers import problem_48
 from problem_050_consecutive_prime_sum import problem_50
 from problem_052_permuted_multiples import problem_52
+from problem_053_combinatoric_selections import problem_53
 
 
 def test_answers():
@@ -41,3 +42,4 @@ def test_answers():
     assert problem_48() == 9110846700
     assert problem_50() == 997651
     assert problem_52() == 142857
+    assert problem_53() == 4075
