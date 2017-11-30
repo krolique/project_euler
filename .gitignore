@@ -1,4 +1,8 @@
 *.py[co]
 
+# py.test files
+.cache
+.coverage
+
 # Mac O/S files that should be ignored
 .DS_Store
