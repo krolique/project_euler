@@ -1,0 +1,16 @@
+language: python
+
+python:
+    - "3.6"
+
+cache: pip
+
+install:
+  - "pip install -r .travis/requirements.txt"
+
+branches:
+  only:
+    - master
+
+before_script:
+  - ./.travis/git_branch_linter.sh
