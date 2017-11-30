@@ -46,4 +46,4 @@ if __name__ == "__main__":
 
     print('problem #53')
     ANSWER = problem_53()
-    print('There are %s numbers greater than a million' % ANSWER)
+    print(f'There are {ANSWER} numbers greater than a million')
