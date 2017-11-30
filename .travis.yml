@@ -14,3 +14,7 @@ branches:
 
 before_script:
   - ./.travis/git_branch_linter.sh
+
+script:
+  - ./.travis/integration_assurances.sh
+
